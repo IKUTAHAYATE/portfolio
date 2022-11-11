@@ -1,0 +1,6 @@
+# node_modules
+ec/node_modules
+
+# dist内.map
+ec/dist/main.js.map
+ec/dist/style.css.map

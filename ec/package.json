@@ -1,0 +1,22 @@
+{
+  "name": "ts-sass",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "dev": "npx webpack-dev-server",
+    "build": "npx webpack",
+    "watch": "npx webpack --watch"
+  },
+  "devDependencies": {
+    "css-loader": "^6.7.1",
+    "mini-css-extract-plugin": "^2.6.0",
+    "sass": "^1.52.3",
+    "sass-loader": "^13.0.0",
+    "ts-loader": "^9.3.0",
+    "typescript": "^4.7.2",
+    "webpack": "^5.72.1",
+    "webpack-cli": "^4.10.0",
+    "webpack-dev-server": "^4.9.0"
+  }
+}
