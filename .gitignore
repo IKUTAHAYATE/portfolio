@@ -2,5 +2,5 @@
 ec/node_modules
 
 # dist内.map
-ec/dist/main.js.map
-ec/dist/style.css.map
+ec/dist/assets/js/main.js.map
+ec/dist/assets/css/style.css.map

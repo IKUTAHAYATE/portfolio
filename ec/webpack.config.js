@@ -9,7 +9,7 @@ module.exports = {
   },
 
   output: {
-    path: path.join(__dirname, 'dist'),
+    path: path.join(__dirname, 'dist/assets/js'),
   },
 
   resolve: {
@@ -34,7 +34,7 @@ module.exports = {
   // webpackの機能拡張
   plugins: [
     new MiniCssExtractPlugin({
-      filename: 'style.css', // アウトプットCSSファイル
+      filename: '../css/style.css', // アウトプットCSSファイル
     }),
   ],
 
