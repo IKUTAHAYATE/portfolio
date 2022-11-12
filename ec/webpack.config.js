@@ -4,11 +4,14 @@ const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
+  mode: "production",
   entry: {
     main: './src/ts/index.ts',
+    foods: './src/ts/food-app.ts'
   },
 
   output: {
+    filename: '[name].js',
     path: path.join(__dirname, 'dist'),
   },
 
