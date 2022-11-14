@@ -12,44 +12,44 @@ article, aside, canvas, details, embed,
 figure, figcaption, footer, header, hgroup,
 menu, nav, output, ruby, section, summary,
 time, mark, audio, video {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  font-size: 100%;
-  font: inherit;
-  vertical-align: baseline;
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
 }
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
-  display: block;
+  	display: block;
 }
 body{
-  color: #333;
-  font-size: 14px;
-  letter-spacing: 0.03em;
-  font-family: 'Hiragino Kaku Gothic Pro', 'メイリオ', 'ＭＳ Ｐゴシック', sans-serif;
-  -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
+	color: #333;
+	font-size: 14px;
+	letter-spacing: 0.03em;
+	font-family: 'Hiragino Kaku Gothic Pro', 'メイリオ', 'ＭＳ Ｐゴシック', sans-serif;
+	-webkit-font-smoothing: antialiased;
+	text-rendering: optimizeLegibility;
 }
 ol, ul, li{
-  list-style: none;
+  	list-style: none;
 }
 table {
-  border-collapse: collapse;
-  border-spacing: 0;
+	border-collapse: collapse;
+	border-spacing: 0;
 }
 select{
-  text-overflow: ellipsis;
-  border: none;
-  outline: none;
-  background: transparent;
-  background-image: none;
-  box-shadow: none;
-  -webkit-appearance: none;
-  appearance: none;
+	text-overflow: ellipsis;
+	border: none;
+	outline: none;
+	background: transparent;
+	background-image: none;
+	box-shadow: none;
+	-webkit-appearance: none;
+	appearance: none;
 }
 a{
-  text-decoration: none;
-  color: #333;
+	text-decoration: none;
+	color: #333;
 }

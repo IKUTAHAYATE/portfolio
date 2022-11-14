@@ -1,0 +1,8 @@
+@use "../../foundation/mixin" as mixin;
+
+.c- {
+	&logo{
+		width: 100px;
+		@include mixin.absoluteType(50%, 0, 0, -50%);
+	}
+}

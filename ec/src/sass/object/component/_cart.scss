@@ -1,0 +1,30 @@
+@use "../../foundation/mixin" as mixin;
+
+.c- {
+	&controls{
+		@include mixin.absoluteType(50%, 0, 0, -50%);
+		left: inherit;
+		right: 0;
+		&__cart{
+			position: relative;
+			width: 20px;
+			height: 20px;
+			display: block;
+		}
+		&__batch {
+			position: absolute;
+			top: -9px;
+			right: -15px;
+			background: orange;
+			width: 20px;
+			height: 20px;
+			display: block;
+			text-align: center;
+			color: #fff;
+			font-weight: bold;
+			border-radius: 50%;
+			font-size: 12px;
+			line-height: 20px;
+		}
+	}
+}

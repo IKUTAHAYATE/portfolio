@@ -1,0 +1,18 @@
+@use "../../foundation/color" as color;
+
+.p- {
+    &item {
+        margin: 0 auto 60px auto;
+        &__head{
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 20px;
+            border-bottom: 1px solid color.$border-color;
+        }
+        &__title{
+            font-size: 30px;
+            font-weight: bold;
+        }
+    }
+}

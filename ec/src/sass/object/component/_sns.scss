@@ -1,0 +1,20 @@
+.c- {
+	&sns {
+		text-align: center;
+		&Item {
+			display: inline-block;
+			margin: 0 10px;
+			a {
+				display: flex;
+				align-items: center;
+			}
+		}
+		&__icon {
+			width: 25px;
+			margin-right: 10px;
+		}
+		&__name {
+			color: #fff;
+		}
+	}
+}
