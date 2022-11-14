@@ -12,13 +12,13 @@
         margin-top: 10px;
         font-weight: bold;
         cursor: pointer;
-        &:hover{
+        &:hover {
             opacity: 0.7;
         }
-        span{
+        span {
             position: relative;
             padding-left: 30px;
-            &::before{
+            &::before {
                 content: "";
                 display: block;
                 @include mixin.absoluteType(50%, 0, 0, -50%);

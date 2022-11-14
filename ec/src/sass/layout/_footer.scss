@@ -25,3 +25,19 @@
         }
     }
 }
+
+@media screen and (max-width: 768px) {
+    .l- {
+        &footer {
+            &__inner {
+                padding: 30px 0;
+            }
+            &__link {
+                &Item {
+                    font-size: 10px;
+                    margin: 0 3px;
+                }
+            }
+        }
+    }
+}

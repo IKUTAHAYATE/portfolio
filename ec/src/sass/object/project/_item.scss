@@ -3,14 +3,14 @@
 .p- {
     &item {
         margin: 0 auto 60px auto;
-        &__head{
+        &__head {
             display: flex;
             justify-content: space-between;
             align-items: baseline;
             margin-bottom: 20px;
             border-bottom: 1px solid color.$border-color;
         }
-        &__title{
+        &__title {
             font-size: 30px;
             font-weight: bold;
         }

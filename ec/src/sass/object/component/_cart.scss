@@ -2,7 +2,7 @@
 @use "../../foundation/color" as color;
 
 .c- {
-	&controls{
+	&controls {
 		@include mixin.absoluteType(50%, 0, 0, -50%);
 		left: inherit;
 		right: 0;
@@ -28,4 +28,13 @@
 			line-height: 20px;
 		}
 	}
+}
+
+@media screen and (max-width: 768px) {
+    .c- {
+        &controls {
+			right: 50%;
+    		transform: translate(50%, -50%);
+		}
+    }
 }

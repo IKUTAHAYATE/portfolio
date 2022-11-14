@@ -19,3 +19,11 @@
         margin: 0 auto 60px auto;
     }
 }
+
+@media screen and (max-width: 768px) {
+    .l- {
+        &contents {
+            padding-top: 45px;
+        }
+    }
+}

@@ -1,18 +1,19 @@
 @use "../foundation/color" as color;
+@use "../foundation/mixin" as mixin;
 
 .l- {
     &list {
         margin: 20px auto 60px auto;
         overflow: hidden;
     }
-    &sidebar{
+    &sidebar {
         float: left;
         width: 200px;
         background: #fafafa;
         margin-right: 40px;
         padding: 20px 0;
         border: 1px solid color.$border-color;
-    &__inner{
+    &__inner {
             padding: 0 20px;
             margin-bottom: 30px;
             &:last-child{
@@ -41,7 +42,7 @@
                 border-radius: 2px;
                 padding: 10px;
                 background: #fff;
-                &::after{
+                &::after {
                     position: absolute;
                     top: 17px;
                     right: 10px;
@@ -63,6 +64,33 @@
             display: inline-block;
             padding: 5px 10px;
             color: #fff;
+        }
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .l- {
+        &sidebar {
+            float: none;
+            margin-right: 0;
+            margin-bottom: 30px;
+            width: auto;
+            &__inner {
+                margin-bottom: 20px;
+            }
+            &__title {
+                font-size: 16px;
+		        position: relative;
+                &::after {
+                    @include mixin.absoluteType(50%, inherit, 0, -50%);
+                    right: 10px;
+                    content: "＋";
+                    font-size: 24px;
+                }
+            }
+            &__body {
+                display: none;
+            }
         }
     }
 }

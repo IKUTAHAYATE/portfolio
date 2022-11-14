@@ -24,7 +24,7 @@ article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
   	display: block;
 }
-body{
+body {
 	color: #333;
 	font-size: 14px;
 	letter-spacing: 0.03em;
@@ -32,14 +32,14 @@ body{
 	-webkit-font-smoothing: antialiased;
 	text-rendering: optimizeLegibility;
 }
-ol, ul, li{
+ol, ul, li {
   	list-style: none;
 }
 table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
-select{
+select {
 	text-overflow: ellipsis;
 	border: none;
 	outline: none;
@@ -49,7 +49,7 @@ select{
 	-webkit-appearance: none;
 	appearance: none;
 }
-a{
+a {
 	text-decoration: none;
 	color: #333;
 }

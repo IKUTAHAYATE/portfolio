@@ -18,3 +18,13 @@
 		}
 	}
 }
+
+@media screen and (max-width: 768px) {
+    .c- {
+		&sns {
+			&Item{
+				font-size: 10px;
+			}
+		}
+    }
+}
