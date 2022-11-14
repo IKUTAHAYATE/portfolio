@@ -1,0 +1,68 @@
+@use "../foundation/color" as color;
+
+.l- {
+    &list {
+        margin: 20px auto 60px auto;
+        overflow: hidden;
+    }
+    &sidebar{
+        float: left;
+        width: 200px;
+        background: #fafafa;
+        margin-right: 40px;
+        padding: 20px 0;
+        border: 1px solid color.$border-color;
+    &__inner{
+            padding: 0 20px;
+            margin-bottom: 30px;
+            &:last-child{
+                margin-bottom: 0;
+            }
+        }
+        &__title {
+            font-weight: bold;
+            font-size: 20px;
+        }
+        &__body {
+            margin-top: 10px;
+        }
+        &__item {
+            a {
+                border-bottom: 1px solid color.$border-color;
+                display: block;
+                padding-bottom: 10px;
+                margin-bottom: 10px;
+            }
+        }
+        &__priceSelect {
+            &__wrap {
+                position: relative;
+                border: 1px solid #bbb;
+                border-radius: 2px;
+                padding: 10px;
+                background: #fff;
+                &::after{
+                    position: absolute;
+                    top: 17px;
+                    right: 10px;
+                    width: 0;
+                    height: 0;
+                    padding: 0;
+                    content: "";
+                    border-left: 6px solid transparent;
+                    border-right: 6px solid transparent;
+                    border-top: 6px solid #666;
+                    pointer-events: none;
+                }
+            }
+        }
+        &__more {
+            font-size: 12px;
+            cursor: pointer;
+            background-color: color.$link-color;
+            display: inline-block;
+            padding: 5px 10px;
+            color: #fff;
+        }
+    }
+}

@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EC NINCO</title>
+    <link rel="stylesheet" href="./assets/css/style.css">
+</head>
+<body>
+	<header class="l-header">
+		<div class="l-inner">
+			<h1 class="c-logo">
+				<a href="#">
+                    <img src="./assets/img/logo_black.png" alt="">
+                </a>
+			</h1>
+			<div class="l-header__links">
+				<nav class="l-menu">
+					<a href="#">MEN</a>
+					<a href="#">WOMAN</a>
+					<a href="#">KIDS</a>
+				</nav>
+				<div class="c-controls">
+					<a href="#" class="c-controls__cart">
+                        <img src="./assets/img/icon_cart_black.svg" alt="">
+						<span class="c-controls__batch"></span>
+					</a>
+				</div>
+			</div>
+			<form class="l-header__search" action="" autocomplete="off" method="GET">
+				<button type="submit"></button>
+				<input type="text" placeholder="何かお探しですか？" name="freeword">
+			</form>
+			<a href="#" id="js-hamburger">
+				<span></span>
+				<span></span>
+				<span></span>
+			</a>
+		</div>
+	</header>
+
+    <div class="l-inner">
+        <div id="page-list" class="l-contents">
+
+            <div class="l-list">
+                <aside class="l-sidebar">
+                    <section class="l-sidebar__inner">
+                        <h3 class="l-sidebar__title">カテゴリー</h3>
+                        <div class="l-sidebar__body">
+                            <ul class="l-sidebar__list">
+                                <li class="l-sidebar__item">
+                                    <a href="#">MEN</a>
+                                </li>
+                                <li class="l-sidebar__item">
+                                    <a href="#">WOMAN</a>
+                                </li>
+                                <li class="l-sidebar__item">
+                                    <a href="#">KIDS</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </section>
+                    <section class="l-sidebar__inner">
+                        <h3 class="l-sidebar__title">価格</h3>
+                        <div class="l-sidebar__body">
+                            <form action="list.html" method="GET">
+                                <div class="l-sidebar__priceSelect__wrap">
+                                    <select name="price" class="l-sidebar__priceSelect">
+                                        <option hidden="">価格を選択する</option>
+                                        <option value="1000">〜1000円</option>
+                                        <option value="2000">〜2000円</option>
+                                        <option value="3000">〜3000円</option>
+                                        <option value="4000">〜4000円</option>
+                                        <option value="5000">〜5000円</option>
+                                    </select>
+                                </div>
+                            </form>
+                        </div>
+                    </section>
+                    <section class="l-sidebar__inner">
+                        <h3 class="l-sidebar__title">ブランド</h3>
+                        <div class="l-sidebar__body">
+                            <ul class="l-sidebar__list">
+                                <li class="l-sidebar__item">
+                                    <a href="#">AAA</a>
+                                </li>
+                                <li class="l-sidebar__item">
+                                    <a href="#">BBB</a>
+                                </li>
+                                <li class="l-sidebar__item">
+                                    <a href="#">CCC</a>
+                                </li>
+                                <li class="l-sidebar__item">
+                                    <a href="#">DDD</a>
+                                </li>
+                                <li class="l-sidebar__item">
+                                    <a href="#">EEE</a>
+                                </li>
+                                <li class="l-sidebar__item">
+                                    <a href="#">FFF</a>
+                                </li>
+                                <li class="l-sidebar__item">
+                                    <a href="#">GGG</a>
+                                </li>
+                                <li class="l-sidebar__item">
+                                    <a href="#">HHH</a>
+                                </li>
+                                <li class="l-sidebar__item">
+                                    <a href="#">III</a>
+                                </li>
+                                <li class="l-sidebar__item">
+                                    <a href="#">JJJ</a>
+                                </li>
+                                <li class="l-sidebar__item">
+                                    <a href="#">KKK</a>
+                                </li>
+                                <li class="l-sidebar__item">
+                                    <a href="#">LLL</a>
+                                </li>
+                            </ul>
+                            <div class="l-sidebar__more">もっと見る＋</div>
+                        </div>
+                    </section>
+                </aside>
+                
+                <section class="l-item">
+                    <div class="c-titleHead">
+                        <h2 class="c-title">シャツ</h2>
+                    </div>
+                    <ul class="c-itemList" data-item-list="new">
+                        <li class="c-item">
+                            <a href="#">
+                                <div class="c-item__cap">
+                                    <img src="./assets/img/item/2.png" loading="lazy">
+                                </div>
+                                <div class="c-item__info">
+                                    <h3 class="c-item__name">ジャケット</h3>
+                                    <p class="c-item__text">テーラーホワイト（tailor）は仕立屋という意味があり、キレイに仕立てられたメンズの上着をテーラードジャケット</p>
+                                    <div class="c-item__price">¥1800</div>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="c-item">
+                            <a href="#">
+                                <div class="c-item__cap">
+                                    <img src="./assets/img/item/2.png" loading="lazy">
+                                </div>
+                                <div class="c-item__info">
+                                    <h3 class="c-item__name">ジャケット</h3>
+                                    <p class="c-item__text">テーラーホワイト（tailor）は仕立屋という意味があり、キレイに仕立てられたメンズの上着をテーラードジャケット</p>
+                                    <div class="c-item__price">¥1800</div>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="c-item">
+                            <a href="#">
+                                <div class="c-item__cap">
+                                    <img src="./assets/img/item/2.png" loading="lazy">
+                                </div>
+                                <div class="c-item__info">
+                                    <h3 class="c-item__name">ジャケット</h3>
+                                    <p class="c-item__text">テーラーホワイト（tailor）は仕立屋という意味があり、キレイに仕立てられたメンズの上着をテーラードジャケット</p>
+                                    <div class="c-item__price">¥1800</div>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="c-item">
+                            <a href="#">
+                                <div class="c-item__cap">
+                                    <img src="./assets/img/item/2.png" loading="lazy">
+                                </div>
+                                <div class="c-item__info">
+                                    <h3 class="c-item__name">ジャケット</h3>
+                                    <p class="c-item__text">テーラーホワイト（tailor）は仕立屋という意味があり、キレイに仕立てられたメンズの上着をテーラードジャケット</p>
+                                    <div class="c-item__price">¥1800</div>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="c-item">
+                            <a href="#">
+                                <div class="c-item__cap">
+                                    <img src="./assets/img/item/2.png" loading="lazy">
+                                </div>
+                                <div class="c-item__info">
+                                    <h3 class="c-item__name">ジャケット</h3>
+                                    <p class="c-item__text">テーラーホワイト（tailor）は仕立屋という意味があり、キレイに仕立てられたメンズの上着をテーラードジャケット</p>
+                                    <div class="c-item__price">¥1800</div>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="c-item">
+                            <a href="#">
+                                <div class="c-item__cap">
+                                    <img src="./assets/img/item/2.png" loading="lazy">
+                                </div>
+                                <div class="c-item__info">
+                                    <h3 class="c-item__name">ジャケット</h3>
+                                    <p class="c-item__text">テーラーホワイト（tailor）は仕立屋という意味があり、キレイに仕立てられたメンズの上着をテーラードジャケット</p>
+                                    <div class="c-item__price">¥1800</div>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="c-item">
+                            <a href="#">
+                                <div class="c-item__cap">
+                                    <img src="./assets/img/item/2.png" loading="lazy">
+                                </div>
+                                <div class="c-item__info">
+                                    <h3 class="c-item__name">ジャケット</h3>
+                                    <p class="c-item__text">テーラーホワイト（tailor）は仕立屋という意味があり、キレイに仕立てられたメンズの上着をテーラードジャケット</p>
+                                    <div class="c-item__price">¥1800</div>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="c-item">
+                            <a href="#">
+                                <div class="c-item__cap">
+                                    <img src="./assets/img/item/2.png" loading="lazy">
+                                </div>
+                                <div class="c-item__info">
+                                    <h3 class="c-item__name">ジャケット</h3>
+                                    <p class="c-item__text">テーラーホワイト（tailor）は仕立屋という意味があり、キレイに仕立てられたメンズの上着をテーラードジャケット</p>
+                                    <div class="c-item__price">¥1800</div>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="l-sidebar__more">もっと見る＋</div>
+                </section>
+            </div>
+
+            <section class="l-item">
+                <div class="c-titleHead">
+                    <h2 class="c-title">PICK UP</h2>
+                    <a href="#" class="c-item__more">もっと見る</a>
+                </div>
+                <ul class="c-itemList c-itemList--pickup" data-item-list="pickup">
+                    <li class="c-item">
+                        <a href="#">
+                            <div class="c-item__cap">
+                                <img src="./assets/img/item/2.png" loading="lazy">
+                            </div>
+                            <div class="c-item__info">
+                                <h3 class="c-item__name">ジャケット</h3>
+                                <p class="c-item__text">テーラーホワイト（tailor）は仕立屋という意味があり、キレイに仕立てられたメンズの上着をテーラードジャケット</p>
+                                <div class="c-item__price">¥1800</div>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="c-item">
+                        <a href="#">
+                            <div class="c-item__cap">
+                                <img src="./assets/img/item/2.png" loading="lazy">
+                            </div>
+                            <div class="c-item__info">
+                                <h3 class="c-item__name">ジャケット</h3>
+                                <p class="c-item__text">テーラーホワイト（tailor）は仕立屋という意味があり、キレイに仕立てられたメンズの上着をテーラードジャケット</p>
+                                <div class="c-item__price">¥1800</div>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="c-item">
+                        <a href="#">
+                            <div class="c-item__cap">
+                                <img src="./assets/img/item/2.png" loading="lazy">
+                            </div>
+                            <div class="c-item__info">
+                                <h3 class="c-item__name">ジャケット</h3>
+                                <p class="c-item__text">テーラーホワイト（tailor）は仕立屋という意味があり、キレイに仕立てられたメンズの上着をテーラードジャケット</p>
+                                <div class="c-item__price">¥1800</div>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="c-item">
+                        <a href="#">
+                            <div class="c-item__cap">
+                                <img src="./assets/img/item/2.png" loading="lazy">
+                            </div>
+                            <div class="c-item__info">
+                                <h3 class="c-item__name">ジャケット</h3>
+                                <p class="c-item__text">テーラーホワイト（tailor）は仕立屋という意味があり、キレイに仕立てられたメンズの上着をテーラードジャケット</p>
+                                <div class="c-item__price">¥1800</div>
+                            </div>
+                        </a>
+                    </li>
+                </ul>				
+            </section>
+
+            <section class="l-item">
+                <div class="c-titleHead">
+                    <h2 class="c-title">お気に入りしたアイテム♡</h2>
+                </div>
+                <ul class="c-itemList" data-item-list="kids">
+                    <li class="c-item">
+                        <a href="#">
+                            <div class="c-item__cap">
+                                <img src="./assets/img/item/2.png" loading="lazy">
+                            </div>
+                            <div class="c-item__info">
+                                <h3 class="c-item__name">ジャケット</h3>
+                                <p class="c-item__text">テーラーホワイト（tailor）は仕立屋という意味があり、キレイに仕立てられたメンズの上着をテーラードジャケット</p>
+                                <div class="c-item__price">¥1800</div>
+                            </div>
+                        </a>
+                    </li>
+                </ul>	
+            </section>
+    
+        </div>
+    </div>
+    
+	<footer class="l-footer">
+		<div class="l-footer__inner l-inner">
+			<div class="l-footer__logo">NINCO</div>
+			<ul class="c-sns">
+				<li class="c-snsItem">
+					<a href="#">
+                        <img src="./assets/img/facebook.png" class="c-sns__icon" alt="">
+                        <span class="c-sns__name">Facebook</span>
+                    </a>
+				</li>
+				<li class="c-snsItem">
+					<a href="#">
+                        <img src="./assets/img/twitter.png" class="c-sns__icon" alt="">
+                        <span class="c-sns__name">TWITTER</span>
+                    </a>
+				</li>
+				<li class="c-snsItem">
+					<a href="#">
+                        <img src="./assets/img/instagram.png" class="c-sns__icon" alt="">
+                        <span class="c-sns__name">INSTAGRAM</span>
+                    </a>
+				</li>
+			</ul>
+		</div>
+		<ul class="l-footer__link">
+			<li class="l-footer__linkItem">
+                <a href="#">ヘルプ</a>
+            </li>
+			<li class="l-footer__linkItem">
+                <a href="#">お問い合わせ</a>
+            </li>
+			<li class="l-footer__linkItem">
+                <a href="#">利用規約</a>
+            </li>
+			<li class="l-footer__linkItem">
+                <a href="#">採用情報</a>
+            </li>
+			<li class="l-footer__linkItem">
+                <a href="#">© NINCO Co., Ltd.</a>
+            </li>
+		</ul>
+	</footer>
+
+</body>
+</html>

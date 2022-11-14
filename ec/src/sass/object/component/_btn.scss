@@ -1,5 +1,6 @@
 @use "../../foundation/images" as image;
 @use "../../foundation/mixin" as mixin;
+@use "../../foundation/color" as color;
 
 .c- {
     &detail__btn {
@@ -26,7 +27,7 @@
             }
         }
         &--cart {
-            background: #2996cc;
+            background: color.$link-color;
             &.is-active {
                 background: #ccc;
             }
