@@ -1,0 +1,100 @@
+@use "../foundation/color" as color;
+
+.l- {
+    &itemDetail {
+        margin: 30px auto 80px;
+        display: flex;
+        background: #f2f2f2;
+        padding: 30px;
+        &__main {
+            width: 50%;
+	        margin-right: 3%;
+            p {
+                text-align: center;
+	            margin-top: 5px;
+            }
+        }
+        &__info {
+            width: 47%;
+            .is-new {
+                display: inline-block;
+                padding: 5px 10px;
+                line-height: 1;
+                margin-bottom: 10px;
+                background: color.$orange-color;
+                color: #fff;
+                border-radius: 3px;
+                font-weight: bold;
+            }
+        }
+        &__name {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        &__brand {
+            margin-bottom: 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        &__size {
+            margin-bottom: 20px;
+	        font-size: 18px;
+            &Item {
+                border-radius: 5px;
+                background: #fff;
+                display: inline-block;
+                padding: 5px 20px;
+                font-size: 16px;
+                font-weight: bold;
+                border: 1px solid color.$border-color;
+                cursor: pointer;
+                margin-bottom: 3px;
+                &.is-active {
+                    background: #333;
+	                color: #fff;
+                }
+                &Select {
+                    font-size: 18px;
+                    font-weight: bold;
+                    margin-bottom: 5px;
+                }
+            }
+        }
+        &__price {
+            font-size: 30px;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+        &__trigger {
+            margin-top: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 18px;
+            &::before {
+                content: "▼";
+                display: inline-block;
+                margin-right: 6px;                
+            }
+            &.is-active:before{
+                content: "ー";
+            }
+        }
+        &__text {
+            margin-top: 18px;
+	        // display: none;
+        }
+        &__review {
+            display: flex;
+            font-size: 30px;
+            &Item {
+                margin-right: 20px;
+                color: #ccc;
+                cursor: pointer;
+                &.is-active {
+                    color: #FFC107;
+                }
+            }
+        }
+    }
+}

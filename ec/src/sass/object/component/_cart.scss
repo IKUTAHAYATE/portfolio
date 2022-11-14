@@ -1,4 +1,5 @@
 @use "../../foundation/mixin" as mixin;
+@use "../../foundation/color" as color;
 
 .c- {
 	&controls{
@@ -15,7 +16,7 @@
 			position: absolute;
 			top: -9px;
 			right: -15px;
-			background: orange;
+			background: color.$orange-color;
 			width: 20px;
 			height: 20px;
 			display: block;
