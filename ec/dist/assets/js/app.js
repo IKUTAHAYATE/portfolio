@@ -85,16 +85,17 @@ $(() => {
             let review_num = 0;
             $(this.trigger).on('click', (e) => {
                 const _self = e.currentTarget;
-                if( review_num === $(this.trigger).index(_self) + 1 ){
+                const _selfIndex = $(this.trigger).index(_self) + 1 ;
+                if( review_num === _selfIndex ){
                     $(this.trigger).removeClass(this.active);
                     review_num = 0;
                 }else{
-                    review_num = $(this.trigger).index(_self) + 1;
+                    review_num = _selfIndex;
                     $(this.trigger).removeClass(this.active);
                     $(`.l-itemDetail__reviewItem:lt('${review_num}')`).addClass(this.active);
                 }
                 $(this.target).text(review_num);
-            });
+            })
         }
         
     }

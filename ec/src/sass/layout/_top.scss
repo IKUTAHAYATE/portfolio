@@ -27,9 +27,9 @@
             list-style: none;
             text-align: center;
             height: 25px;
-            li.slick-active button:before{
+            li.slick-active button:before {
                 color: #24b99f;
-              }
+            }
         }
         &__btn {
             position: absolute;
@@ -40,11 +40,11 @@
             cursor: pointer;
             display: block;
             z-index: 0;
-            &.is-prev{
+            &.is-prev {
                 left: 0;
                 background: url(image.$arrowPrev) no-repeat center/cover;
             }
-            &.is-next{
+            &.is-next {
                 right: 0;
                 background: url(image.$arrowNext) no-repeat center/cover;
             }
