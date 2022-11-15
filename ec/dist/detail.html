@@ -51,15 +51,15 @@
                     <h2 class="l-itemDetail__name"></h2>
                     <div class="l-itemDetail__brand">BRAND：<span>AAA</span></div>
                     <div class="l-itemDetail__size">
-                        <div class="l-itemDetail__sizeSelect">Select Size：<span>140</span></div>
+                        <div class="l-itemDetail__sizeSelect">Select Size：<span size-bind="target">140</span></div>
                         <ul class="l-itemDetail__sizeList">
-                            <li class="l-itemDetail__sizeItem">130</li>
-                            <li class="l-itemDetail__sizeItem is-active">140</li>
-                            <li class="l-itemDetail__sizeItem">150</li>
-                            <li class="l-itemDetail__sizeItem">160</li>
-                            <li class="l-itemDetail__sizeItem">170</li>
-                            <li class="l-itemDetail__sizeItem">180</li>
-                            <li class="l-itemDetail__sizeItem">190</li>
+                            <li class="l-itemDetail__sizeItem" size-bind="trigger">130</li>
+                            <li class="l-itemDetail__sizeItem is-active" size-bind="trigger">140</li>
+                            <li class="l-itemDetail__sizeItem" size-bind="trigger">150</li>
+                            <li class="l-itemDetail__sizeItem" size-bind="trigger">160</li>
+                            <li class="l-itemDetail__sizeItem" size-bind="trigger">170</li>
+                            <li class="l-itemDetail__sizeItem" size-bind="trigger">180</li>
+                            <li class="l-itemDetail__sizeItem" size-bind="trigger">190</li>
                         </ul>
                     </div>
                     <div class="l-itemDetail__price">¥<span>1800</span></div>
@@ -77,12 +77,15 @@
 					<h2 class="c-title">レビューをする</h2>
                 </div>
                 <ul class="l-itemDetail__review">
-                    <li class="l-itemDetail__reviewItem is-active">★</li>
-                    <li class="l-itemDetail__reviewItem is-active">★</li>
-                    <li class="l-itemDetail__reviewItem is-active">★</li>
-                    <li class="l-itemDetail__reviewItem">★</li>
-                    <li class="l-itemDetail__reviewItem">★</li>
+                    <li class="l-itemDetail__reviewItem is-active" review-item="trigger">★</li>
+                    <li class="l-itemDetail__reviewItem is-active" review-item="trigger">★</li>
+                    <li class="l-itemDetail__reviewItem is-active" review-item="trigger">★</li>
+                    <li class="l-itemDetail__reviewItem" review-item="trigger">★</li>
+                    <li class="l-itemDetail__reviewItem" review-item="trigger">★</li>
                 </ul>
+                <div class="l-itemDetail__review__text">
+                    <p>評価は: <span review-item="target">3</span>です</p>
+                </div>
             </section>
 
             <section class="l-item">

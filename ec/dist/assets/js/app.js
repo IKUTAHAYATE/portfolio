@@ -44,34 +44,59 @@ $(() => {
             new Hamburger(
                 '[hamburger-menu="trigger"]',
                 '[hamburger-menu="target"]'
-            ).process(this.active)
+            ).process()
 
             new SizeBind(
-                '.l-itemDetail__sizeItem',
-                '.l-itemDetail__sizeSelect span'
-            ).process(this.active)
+                '[size-bind="trigger"]',
+                '[size-bind="target"]'
+            ).process()
+
+            new Review(
+                '[review-item="trigger"]',
+                '[review-item="target"]'
+            ).process()
         }
     }
     // ハンバーガーメニューclass化
     class Hamburger extends Animation {
-        process(addClass) {
+        process() {
             $(this.trigger).on('click', (e) => {
-                $(e.currentTarget).toggleClass(addClass);
-                $(this.target).toggleClass(addClass);
+                $(e.currentTarget).toggleClass(this.active);
+                $(this.target).toggleClass(this.active);
             })
         }
     }
     
     // 詳細ページSelectSize箇所テキストバインド処理
     class SizeBind extends Animation {
-        process(addClass) {
+        process() {
             $(this.trigger).on('click', (e) => {
                 const select_size = $(e.currentTarget).text();
-                $(e.currentTarget).addClass(addClass)
-                    .siblings('li').removeClass(addClass);
+                $(e.currentTarget).addClass(this.active)
+                    .siblings('li').removeClass(this.active);
                 $(this.target).text(select_size);
             })
         }
+    }
+
+    // 詳細ペーレビュー機能実装
+    class Review extends Animation {
+        process() {
+            let review_num = 0;
+            $(this.trigger).on('click', (e) => {
+                const _self = e.currentTarget;
+                if( review_num === $(this.trigger).index(_self) + 1 ){
+                    $(this.trigger).removeClass(this.active);
+                    review_num = 0;
+                }else{
+                    review_num = $(this.trigger).index(_self) + 1;
+                    $(this.trigger).removeClass(this.active);
+                    $(`.l-itemDetail__reviewItem:lt('${review_num}')`).addClass(this.active);
+                }
+                $(this.target).text(review_num);
+            });
+        }
+        
     }
 
     const animation = new Animation();
