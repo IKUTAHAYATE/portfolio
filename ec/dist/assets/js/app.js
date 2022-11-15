@@ -29,5 +29,15 @@ $(() => {
         });
     }
 
+    // ハンバーガーメニュー処理
+    const runHamburger = () => {
+        const isActive = 'is-active';
+        $('[hamburger-menu="trigger"]').on('click', (e) => {
+            $(e.currentTarget).toggleClass(isActive);
+            $('[hamburger-menu="target"]').toggleClass(isActive);
+        });
+    }
+
     showSlick();
+    runHamburger();
 });
