@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EC NINCO</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css">
     <link rel="stylesheet" href="./assets/css/style.css">
 </head>
 <body>
@@ -40,19 +42,17 @@
 	</header>
 
     <div class="l-contents">
-		<div class="l-slider">
-			<ul>
-				<li>
-                    <img src="./assets/img/banner1.png" alt="">
-                </li>
-				<li>
-                    <img src="./assets/img/banner2.png" alt="">
-                </li>
-				<li>
-                    <img src="./assets/img/banner3.png" alt="">
-                </li>
-			</ul>
-		</div>
+		<ul id="js-slider" class="l-slider">
+            <li>
+                <img src="./assets/img/banner1.png" alt="">
+            </li>
+            <li>
+                <img src="./assets/img/banner2.png" alt="">
+            </li>
+            <li>
+                <img src="./assets/img/banner3.png" alt="">
+            </li>
+        </ul>
 
 		<div class="l-inner">
 			<section class="l-item">
@@ -500,5 +500,13 @@
             </li>
 		</ul>
 	</footer>
+
+    <script
+        src="https://code.jquery.com/jquery-3.6.1.js"
+        integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI="
+        crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>
+    <script src="./assets/js/app.js"></script>
 </body>
 </html>
