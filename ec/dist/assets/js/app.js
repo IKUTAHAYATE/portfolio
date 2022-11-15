@@ -55,6 +55,11 @@ $(() => {
                 '[review-item="trigger"]',
                 '[review-item="target"]'
             ).process()
+
+            new ItemAccordion(
+                '[item-accordion="trigger"]',
+                '[item-accordion="targt"]'
+            ).process()
         }
     }
     // ハンバーガーメニューclass化
@@ -97,7 +102,16 @@ $(() => {
                 $(this.target).text(review_num);
             })
         }
-        
+    }
+
+    // 商品説明アコーディオン
+    class ItemAccordion extends Animation {
+        process() {
+            $(this.trigger).on('click', (e) => {
+                $(e.currentTarget).toggleClass(this.active);
+                $(this.target).slideToggle();
+            });
+        }
     }
 
     const animation = new Animation();
