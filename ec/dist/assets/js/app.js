@@ -1,6 +1,10 @@
 "use strict";
 
+// ページローダー処理
+$(window).on('load', () => { $('.c-loader').fadeOut(); });
+
 $(() => {
+    // トップページスリック処理
     const showSlick = () => {
         $('#js-slider').slick({
             arrows:true,
