@@ -28,6 +28,9 @@
             margin-top: 10px;
         }
         &__item {
+            &:nth-child(n + 4) {
+                display: none;
+            }
             a {
                 border-bottom: 1px solid color.$border-color;
                 display: block;
@@ -64,6 +67,10 @@
             display: inline-block;
             padding: 5px 10px;
             color: #fff;
+        }
+        & + .l-item {
+            float: left;
+            width: calc(100% - 200px - 40px);
         }
     }
 }
