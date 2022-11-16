@@ -3,7 +3,7 @@
 // ページローダー処理
 $(window).on('load', () => { $('.c-loader').fadeOut(); })
 
-$(($) => {
+$(() => {
     // slickをトップページのみ適用
     if( location.pathname === '/' ){
         // トップページスリック処理
@@ -122,12 +122,10 @@ $(($) => {
     // 各商品の出し分け処理
     const addItems = () => {
         class Item {
-            constructor() {
-                this.html_template = '';
-            }
             createDom(items) {
+                let html_template = '';
                 items.forEach((item) => {
-                    this.html_template += `<li class="c-item" data-item-id="${item['id']}">
+                    html_template += `<li class="c-item" data-item-id="${item['id']}">
                     <a href="detail.html?id=${item['id']}">
                     <div class="c-item__cap">
                     <img src="/assets/img/item/${item['id']}.png" loading="lazy">
@@ -140,18 +138,54 @@ $(($) => {
                     </a>
                     </li>`;
                 })
-                return this.html_template;
+                return html_template;
             }
             execution() {
-                const itemList = new ItemList();
-                const news = itemList.getItemList('new');
-                $('[data-item-list="new"]').append(this.createDom(news))
+                const itemList = new ItemList(),
+                    news = itemList.getItemList('new'),
+                    categorys = ['men', 'woman', 'kids'],
+                    _self = this;
+
+                // item_dataのnewがつくitem表示
+                $('[data-item-list="new"]').append(_self.createDom(news));
+
+                // item_dataのカテゴリ別のitem表示
+                categorys.forEach((category) => {
+                    let item_list_category = itemList.getItemList('category', category);
+                    item_list_category = _self.createDom(item_list_category);
+                    $(`[data-item-list="${category}"]`).append(item_list_category);
+                    
+                })
+
+                // item_dataのpickupのitem表示
+                let item_list_pickup = _self.createDom(this.pickUpShuffle(item_data));
+                $('[data-item-list="pickup"]').append(item_list_pickup);
+            }
+            // picupのitemランダムで6つ出す処理
+            pickUpShuffle(item_data) {
+                let items = [],
+                    rand_check = [];
+                for( let i = 0; i < 6; i++ ){
+                    let j = Math.floor(Math.random() * item_data.length + 1);
+                    if( rand_check.indexOf(j) !== -1 ){
+                        i--;
+                        continue;
+                    }else{
+                        rand_check.push(j);
+                        items.push(item_data[j]);
+                    }
+                }
+                return items;
             }
         }
+        // item_dataに入っているオブジェクトを条件で出し分けて返す
         class ItemList {
-            getItemList(key) {
+            getItemList(key, value = null) {
                 const items = item_data.filter((item) => {
                     switch(key){
+                        case 'category':
+                            return item[key] === value
+                            break;
                         case 'new':
                             return item['new']
                             break;
@@ -160,10 +194,12 @@ $(($) => {
                 return items;
             }
         }
+
+        // itemクラスインスタンス化
         const item = new Item();
         item.execution();
     }
 
     runAnimation();
     addItems();
-})(jQuery)
+})
