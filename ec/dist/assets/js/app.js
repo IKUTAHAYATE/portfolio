@@ -191,6 +191,7 @@ $(() => {
                     items = item_data.filter((item) => {
                     switch(key){
                         case 'category':
+                        case 'brand':
                             return item[key] == search_value
                             break;
                         case 'new':
