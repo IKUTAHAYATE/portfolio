@@ -34,6 +34,7 @@
                 background: transparent;
                 padding: 0;
                 cursor: pointer;
+                z-index: 1;
             }
             input {
                 @include mixin.absoluteType(50%, 45%, 0, -50%);

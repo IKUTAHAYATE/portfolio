@@ -186,19 +186,27 @@ $(() => {
         // item_dataに入っているオブジェクトを条件で出し分けて返す
         class ItemList {
             getItemList(key, value = null) {
-                const param_value = location.search.substring(1).split('=')[1],
-                    search_value = value ? value : param_value,
+                const param_value = location.search.substring(1).split('=')[1];
+                const search_value = value ? value : param_value,
+                    freewords = ['name', 'text'],
                     items = item_data.filter((item) => {
                     switch(key){
                         case 'category':
                         case 'brand':
-                            return item[key] == search_value
+                            return item[key] == search_value;
+                            break;
+                        case 'freeword':
+                            return freewords.find((freeword) => {
+                                return item[freeword].indexOf(decodeURI(param_value)) !== -1;
+                            });
                             break;
                         case 'new':
-                            return item['new']
+                            return item['new'];
                             break;
                     }
                 })
+                // 検索機能(フリーワード)の処理
+                $('.result-text').text(decodeURI(param_value));
                 return items;
             }
         }
