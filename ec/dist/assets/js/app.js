@@ -121,6 +121,8 @@ $(() => {
 
     // 各商品の出し分け処理
     const addItems = () => {
+        const param_key = location.search.substring(1).split('=')[0],
+            param_value = location.search.substring(1).split('=')[1];
         class Item {
             createDom(items) {
                 let html_template = '';
@@ -154,7 +156,6 @@ $(() => {
                     let item_list_category = itemList.getItemList('category', category);
                     item_list_category = _self.createDom(item_list_category);
                     $(`[data-item-list="${category}"]`).append(item_list_category);
-                    
                 })
 
                 // item_dataのpickupのitem表示
@@ -162,7 +163,6 @@ $(() => {
                 $('[data-item-list="pickup"]').append(item_list_pickup);
 
                 // リストページのカテゴリ(MEN,WOMAN,KIDS)押下時の処理
-                const param_key = location.search.substring(1).split('=')[0];
                 const item_list = this.createDom(itemList.getItemList(param_key));
                 $('#sort-list').append(item_list);
 
@@ -173,6 +173,9 @@ $(() => {
 
                 // リストページ検索した商品が10個以下の場合「もっと見る」削除
                 if ($('#sort-list').find('.c-item').length <= 10) $('[data-more-btn="items"]').hide();
+
+                const showDetail =  new ShowDetail();
+                showDetail.getItem();
             }
             // picupのitemランダムで6つ出す処理
             pickUpShuffle(item_data) {
@@ -194,10 +197,8 @@ $(() => {
         // item_dataに入っているオブジェクトを条件で出し分けて返す
         class ItemList {
             getItemList(key, value = null) {
-                const param_key = location.search.substring(1).split('=')[0],
-                    param_value = location.search.substring(1).split('=')[1],
                     // 検索条件の出し分け
-                    searchWordShow = () => {
+                const searchWordShow = () => {
                         let result_text;
                         if( param_key === 'price' ){
                             result_text = `〜${param_value}円`;
@@ -231,6 +232,23 @@ $(() => {
                 // 検索機能(フリーワード)の処理
                 searchWordShow();
                 return items;
+            }
+        }
+
+        // 詳細ページ表示処理
+        class ShowDetail {
+            getItemSingle() {
+                return item_data.find((item) => {
+                   return item['id'] === Number(param_value);
+                })
+            }
+            getItem() {
+                const item_detail = this.getItemSingle();
+                Object.keys(item_detail).forEach((key) =>  {
+                    $(`[data-item-parts="${key}"]`).text(item_detail[key]);
+                })
+                $('[data-item-parts="img"]').attr('src', `assets/img/item/${item_detail['id']}.png`);
+                if( !item_detail['new'] )$('.new-label').remove();
             }
         }
 
