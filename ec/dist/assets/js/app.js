@@ -160,6 +160,11 @@ $(() => {
                 // item_dataのpickupのitem表示
                 let item_list_pickup = _self.createDom(this.pickUpShuffle(item_data));
                 $('[data-item-list="pickup"]').append(item_list_pickup);
+
+                // リストページのカテゴリ(MEN,WOMAN,KIDS)押下時の処理
+                const param_key = location.search.substring(1).split('=')[0];
+                const item_list = this.createDom(itemList.getItemList(param_key));
+                $('#sort-list').append(item_list);
             }
             // picupのitemランダムで6つ出す処理
             pickUpShuffle(item_data) {
@@ -181,10 +186,12 @@ $(() => {
         // item_dataに入っているオブジェクトを条件で出し分けて返す
         class ItemList {
             getItemList(key, value = null) {
-                const items = item_data.filter((item) => {
+                const param_value = location.search.substring(1).split('=')[1],
+                    search_value = value ? value : param_value,
+                    items = item_data.filter((item) => {
                     switch(key){
                         case 'category':
-                            return item[key] === value
+                            return item[key] == search_value
                             break;
                         case 'new':
                             return item['new']
