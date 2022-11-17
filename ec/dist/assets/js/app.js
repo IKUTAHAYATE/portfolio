@@ -4,6 +4,14 @@
 $(window).on('load', () => { $('.c-loader').fadeOut(); })
 
 $(() => {
+    // ページタイプの条件
+    const page_type = $('body').attr('id');
+    const page_type_criteria = {
+        top: page_type === 'page-top',
+        list: page_type === 'page-list',
+        detail: page_type === 'page-detail'
+    }
+
     // slickをトップページのみ適用
     if( location.pathname === '/' ){
         // トップページスリック処理
@@ -47,20 +55,22 @@ $(() => {
                     '[hamburger-menu="target"]'
                 ).process()
     
-                new SizeBind(
-                    '[size-bind="trigger"]',
-                    '[size-bind="target"]'
-                ).process()
-    
-                new Review(
-                    '[review-item="trigger"]',
-                    '[review-item="target"]'
-                ).process()
-    
-                new ItemAccordion(
-                    '[item-accordion="trigger"]',
-                    '[item-accordion="targt"]'
-                ).process()
+                if ( page_type_criteria.detail ) {
+                    new SizeBind(
+                        '[size-bind="trigger"]',
+                        '[size-bind="target"]'
+                    ).process()
+
+                    new Review(
+                        '[review-item="trigger"]',
+                        '[review-item="target"]'
+                    ).process()
+
+                    new ItemAccordion(
+                        '[item-accordion="trigger"]',
+                        '[item-accordion="targt"]'
+                    ).process()
+                }
             }
         }
 
@@ -162,20 +172,24 @@ $(() => {
                 let item_list_pickup = _self.createDom(this.pickUpShuffle(item_data));
                 $('[data-item-list="pickup"]').append(item_list_pickup);
 
-                // リストページのカテゴリ(MEN,WOMAN,KIDS)押下時の処理
-                const item_list = this.createDom(itemList.getItemList(param_key));
-                $('#sort-list').append(item_list);
+                if ( page_type_criteria.list ) {
+                    // リストページのカテゴリ(MEN,WOMAN,KIDS)押下時の処理
+                    const item_list = this.createDom(itemList.getItemList(param_key));
+                    $('#sort-list').append(item_list);
+                    
+                    // 価格の変更時submit
+                    $('.l-sidebar__priceSelect').on('change', () => {
+                        $('#price-form').submit();
+                    })
 
-                // 価格の変更時submit
-                $('.l-sidebar__priceSelect').on('change', () => {
-                    $('#price-form').submit();
-                })
+                    // リストページ検索した商品が10個以下の場合「もっと見る」削除
+                    if ($('#sort-list').find('.c-item').length <= 10) $('[data-more-btn="items"]').hide();
+                }
 
-                // リストページ検索した商品が10個以下の場合「もっと見る」削除
-                if ($('#sort-list').find('.c-item').length <= 10) $('[data-more-btn="items"]').hide();
-
-                const showDetail =  new ShowDetail();
-                showDetail.getItem();
+                if ( page_type_criteria.detail ) {
+                    const showDetail =  new ShowDetail();
+                    showDetail.getItem();
+                }
             }
             // picupのitemランダムで6つ出す処理
             pickUpShuffle(item_data) {
@@ -287,11 +301,13 @@ $(() => {
                 })
             }
         }
-        const more = new More(
-            more_count['brand'],
-            more_count['items'],
-        )
-        more.execution();
+        if ( page_type_criteria.list ) {
+            const more = new More(
+                more_count['brand'],
+                more_count['items'],
+            )
+            more.execution();
+        }
     }
 
     runAnimation();
