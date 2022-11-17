@@ -165,6 +165,14 @@ $(() => {
                 const param_key = location.search.substring(1).split('=')[0];
                 const item_list = this.createDom(itemList.getItemList(param_key));
                 $('#sort-list').append(item_list);
+
+                // 価格の変更時submit
+                $('.l-sidebar__priceSelect').on('change', () => {
+                    $('#price-form').submit();
+                })
+
+                // リストページ検索した商品が10個以下の場合「もっと見る」削除
+                if ($('#sort-list').find('.c-item').length <= 10) $('[data-more-btn="items"]').hide();
             }
             // picupのitemランダムで6つ出す処理
             pickUpShuffle(item_data) {
@@ -186,19 +194,34 @@ $(() => {
         // item_dataに入っているオブジェクトを条件で出し分けて返す
         class ItemList {
             getItemList(key, value = null) {
-                const param_value = location.search.substring(1).split('=')[1];
-                const search_value = value ? value : param_value,
+                const param_key = location.search.substring(1).split('=')[0],
+                    param_value = location.search.substring(1).split('=')[1],
+                    // 検索条件の出し分け
+                    searchWordShow = () => {
+                        let result_text;
+                        if( param_key === 'price' ){
+                            result_text = `〜${param_value}円`;
+                            $(`.l-sidebar__priceSelect option[value="${param_value}"]`).prop('selected', true);
+                        }else{
+                            result_text = param_value;
+                        }
+                        $('#result-text').text(decodeURI(result_text));
+                    },
+                    search_value = value ? value : param_value,
                     freewords = ['name', 'text'],
                     items = item_data.filter((item) => {
-                    switch(key){
+                    switch(key) {
                         case 'category':
                         case 'brand':
-                            return item[key] == search_value;
+                            return item[key] === search_value;
                             break;
                         case 'freeword':
                             return freewords.find((freeword) => {
                                 return item[freeword].indexOf(decodeURI(param_value)) !== -1;
-                            });
+                            })
+                            break;
+                        case 'price':
+                            return item['price'] <= search_value
                             break;
                         case 'new':
                             return item['new'];
@@ -206,7 +229,7 @@ $(() => {
                     }
                 })
                 // 検索機能(フリーワード)の処理
-                $('.result-text').text(decodeURI(param_value));
+                searchWordShow();
                 return items;
             }
         }
@@ -234,9 +257,7 @@ $(() => {
                     max_count = target_list.find('li').length;
                 more_count[more_type] += num;
                 target_list.find(`li:lt(${more_count[more_type]})`).fadeIn();
-                if( more_count[more_type] >= max_count ){
-                    $(el).hide();
-                }
+                if( more_count[more_type] >= max_count )$(el).hide();
             }
             execution() {
                 const _self = this;

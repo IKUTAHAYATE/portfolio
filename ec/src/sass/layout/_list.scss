@@ -39,6 +39,8 @@
             }
         }
         &__priceSelect {
+            width: 100%;
+            cursor: pointer;
             &__wrap {
                 position: relative;
                 border: 1px solid #bbb;
