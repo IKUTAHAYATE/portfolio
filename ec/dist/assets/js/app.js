@@ -280,6 +280,7 @@ $(() => {
                 Object.keys(item_detail).forEach((key) =>  {
                     $(`[data-item-parts="${key}"]`).text(item_detail[key]);
                 })
+                $('.l-itemDetail').attr('data-item-id', item_detail['id']);
                 $('[data-item-parts="img"]').attr('src', `assets/img/item/${item_detail['id']}.png`);
                 if( !item_detail['new'] )$('.new-label').remove();
             }
@@ -329,7 +330,59 @@ $(() => {
         }
     }
 
+    // ローカルストレージにカート処理
+    const storage = () => {
+        class StorageControl {
+            // ローカルストレージにidが入っているか判定
+            storageJudge(id) {
+                let storage_data = JSON.parse(localStorage.getItem('ninco_cart'));
+                id = Number(id);
+                if( storage_data !== null ){
+                    return storage_data.indexOf(id) !== -1;
+                }
+            }
+            // ローカルストレージの中身がnullの場合idをセットする
+            storageSet(id) {
+                let storage_data = JSON.parse(localStorage.getItem('ninco_cart'));
+                id = Number(id);
+                if( storage_data === null ){
+                    storage_data = [id];
+                }else{
+                    if( this.storageJudge(id) ){
+                        storage_data.splice(storage_data.indexOf(id), 1);
+                    }else{
+                        storage_data.push(id);
+                    }
+                }
+                localStorage.setItem('ninco_cart', JSON.stringify(storage_data));                
+            }
+            // カートに追加する押下時の処理
+            doneFlash(text) {
+                $('body').append(`<div class="c-cart__flash">${text}</div>`);
+                setTimeout(() => {
+                    location.reload();
+                }, 2000)
+            }
+            execution() {
+                const _self = this;
+                //カートに追加
+                $('.c-btn--cart').on('click', (e) => {
+                    const item_id = $(e.currentTarget).parents('.l-itemDetail').attr('data-item-id');
+                    _self.storageSet(item_id, 'cart');
+                    if( _self.storageJudge(item_id, 'cart') ){
+                        _self.doneFlash('カートに追加しました。');
+                    }else{
+                        _self.doneFlash('カートから外しました。');
+                    }
+                })
+            }
+        }
+        const storageControl = new StorageControl();
+        storageControl.execution();
+    }
+
     runAnimation();
     addItems();
     moreButton();
+    storage();
 })
