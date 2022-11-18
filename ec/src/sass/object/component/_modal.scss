@@ -29,6 +29,10 @@
             font-weight: bold;
             margin-bottom: 20px;
         }
+        #cart-list {
+            max-height: 50vh;
+            overflow: scroll;
+        }
     }
 }
 

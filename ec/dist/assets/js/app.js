@@ -11,6 +11,24 @@ $(() => {
         list: page_type === 'page-list',
         detail: page_type === 'page-detail'
     }
+    const createDom = (items) => {
+        let html_template = '';
+        items.forEach((item) => {
+            html_template += `<li class="c-item" data-item-id="${item['id']}">
+            <a href="detail.html?id=${item['id']}">
+            <div class="c-item__cap">
+            <img src="/assets/img/item/${item['id']}.png" loading="lazy">
+            </div>
+            <div class="c-item__info">
+            <h3 class="c-item__name">${item['name']}</h3>
+            <p class="c-item__text">${item['text']}</p>
+            <div class="c-item__price">¥${item['price']}</div>
+            </div>
+            </a>
+            </li>`;
+        })
+        return html_template;
+    }
 
     // slickをトップページのみ適用
     if( location.pathname === '/' ){
@@ -153,24 +171,6 @@ $(() => {
         const param_key = location.search.substring(1).split('=')[0],
             param_value = location.search.substring(1).split('=')[1];
         class Item {
-            createDom(items) {
-                let html_template = '';
-                items.forEach((item) => {
-                    html_template += `<li class="c-item" data-item-id="${item['id']}">
-                    <a href="detail.html?id=${item['id']}">
-                    <div class="c-item__cap">
-                    <img src="/assets/img/item/${item['id']}.png" loading="lazy">
-                    </div>
-                    <div class="c-item__info">
-                    <h3 class="c-item__name">${item['name']}</h3>
-                    <p class="c-item__text">${item['text']}</p>
-                    <div class="c-item__price">¥${item['price']}</div>
-                    </div>
-                    </a>
-                    </li>`;
-                })
-                return html_template;
-            }
             execution() {
                 const itemList = new ItemList(),
                     news = itemList.getItemList('new'),
@@ -178,22 +178,22 @@ $(() => {
                     _self = this;
 
                 // item_dataのnewがつくitem表示
-                $('[data-item-list="new"]').append(_self.createDom(news));
+                $('[data-item-list="new"]').append(createDom(news));
 
                 // item_dataのカテゴリ別のitem表示
                 categorys.forEach((category) => {
                     let item_list_category = itemList.getItemList('category', category);
-                    item_list_category = _self.createDom(item_list_category);
+                    item_list_category = createDom(item_list_category);
                     $(`[data-item-list="${category}"]`).append(item_list_category);
                 })
 
                 // item_dataのpickupのitem表示
-                let item_list_pickup = _self.createDom(this.pickUpShuffle(item_data));
+                let item_list_pickup = createDom(this.pickUpShuffle(item_data));
                 $('[data-item-list="pickup"]').append(item_list_pickup);
 
                 if ( page_type_criteria.list ) {
                     // リストページのカテゴリ(MEN,WOMAN,KIDS)押下時の処理
-                    const item_list = this.createDom(itemList.getItemList(param_key));
+                    const item_list = createDom(itemList.getItemList(param_key));
                     $('#sort-list').append(item_list);
                     
                     // 価格の変更時submit
@@ -375,6 +375,28 @@ $(() => {
                         _self.doneFlash('カートから外しました。');
                     }
                 })
+
+                //カートに入れたアイテムを生成
+                const cart_storage = JSON.parse(localStorage.getItem('ninco_cart'));
+                let cart_price = 0;
+                if( cart_storage !== null ){
+                    const cart_items = item_data.filter((item) => {
+                        if( cart_storage.indexOf(item['id']) !== -1 ){
+                            cart_price += item['price'];
+                            return item;
+                        }
+                    })
+                     //カートの合計金額を出力
+                    $('.c-cart__price').text(cart_price + '円');
+                    //カートの合計点数を計算
+                    $('.c-controls__batch, .c-cart__num').text(cart_storage.length);
+                    if( cart_storage.length <= 0 ){
+                        $('.c-controls__batch').hide();
+                    }
+                    $('#cart-list').append(createDom(cart_items, true));
+                }else {
+                    $('.c-controls__batch').hide();
+                }
             }
         }
         const storageControl = new StorageControl();
