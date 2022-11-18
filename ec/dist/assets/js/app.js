@@ -11,8 +11,12 @@ $(() => {
         list: page_type === 'page-list',
         detail: page_type === 'page-detail'
     }
-    const createDom = (items) => {
+    const createDom = (items, delate_btn_flg = null) => {
         let html_template = '';
+        let delate_dom = '';
+		if(delate_btn_flg){
+			delate_dom = '<div class="c-cart__delete"><img src="/assets/img/icon_delete.svg"></div>';
+		}
         items.forEach((item) => {
             html_template += `<li class="c-item" data-item-id="${item['id']}">
             <a href="detail.html?id=${item['id']}">
@@ -25,9 +29,15 @@ $(() => {
             <div class="c-item__price">¥${item['price']}</div>
             </div>
             </a>
+            ${delate_dom}
             </li>`;
         })
         return html_template;
+    }
+    const cartReload =  () => {
+        setTimeout(() => {
+            location.reload();
+        }, 200);
     }
 
     // slickをトップページのみ適用
@@ -115,7 +125,7 @@ $(() => {
                     $(this.target).fadeToggle();
                     $('[hamburger-menu="trigger"], [hamburger-menu="target"]').removeClass(this.active);
                 })
-                $('.c-modal__close, .c-modal').on('click', () => {
+                $('.c-modal__close').on('click', () => {
                     $(this.target).fadeOut();
                 })
             }
@@ -359,9 +369,29 @@ $(() => {
             // カートに追加する押下時の処理
             doneFlash(text) {
                 $('body').append(`<div class="c-cart__flash">${text}</div>`);
-                setTimeout(() => {
-                    location.reload();
-                }, 2000)
+                cartReload();
+            }
+            storageDelete() {
+                const _self = this;
+                //カートからアイテムを削除
+                $('.c-cart__delete').on('click', (e) => {
+                    if( confirm('本当に削除して良いですか?') ){
+                        const item_id = $(e.currentTarget).parents('[data-item-id]').attr('data-item-id');
+                        _self.storageSet(item_id);
+                        cartReload();
+                    }
+                });
+            }
+            strageBuy() {
+                //購入ボタンを押したときの処理
+                $('.c-btn--buy').on('click', (e) => {
+                    e.preventDefault();
+                    if( confirm('購入して良いですか?') ){
+                        localStorage.removeItem('ninco_cart');
+                        alert('購入しました！');
+                        cartReload();
+                    }
+                });
             }
             execution() {
                 const _self = this;
@@ -397,6 +427,8 @@ $(() => {
                 }else {
                     $('.c-controls__batch').hide();
                 }
+                this.storageDelete()
+                this.strageBuy();
             }
         }
         const storageControl = new StorageControl();
