@@ -54,6 +54,11 @@ $(() => {
                     '[hamburger-menu="trigger"]',
                     '[hamburger-menu="target"]'
                 ).process()
+
+                new Modal(
+                    '[modal-menu="trigger"]',
+                    '[modal-menu="target"]'
+                ).process()
     
                 if ( page_type_criteria.detail ) {
                     new SizeBind(
@@ -80,6 +85,20 @@ $(() => {
                 $(this.trigger).on('click', (e) => {
                     $(e.currentTarget).toggleClass(this.active);
                     $(this.target).toggleClass(this.active);
+                })
+            }
+        }
+
+        // カートモーダル作成
+        class Modal extends Animation {
+            process() {
+                $(this.trigger).on('click', (e) => {
+                    e.preventDefault();
+                    $(this.target).fadeToggle();
+                    $('[hamburger-menu="trigger"], [hamburger-menu="target"]').removeClass(this.active);
+                })
+                $('.c-modal__close, .c-modal').on('click', () => {
+                    $(this.target).fadeOut();
                 })
             }
         }

@@ -21,7 +21,7 @@
 					<a href="list.html?category=kids">KIDS</a>
 				</nav>
 				<div class="c-controls">
-					<a href="#" class="c-controls__cart">
+					<a href="#" class="c-controls__cart" modal-menu="trigger">
                         <img src="./assets/img/icon_cart_black.svg" alt="">
 						<span class="c-controls__batch"></span>
 					</a>
@@ -62,8 +62,8 @@
                         </ul>
                     </div>
                     <div class="l-itemDetail__price">¥<span data-item-parts="price">1800</span></div>
-                    <div class="c-detail__btn c-detail__btn--cart"><span>カートに追加する</span></div>
-                    <div class="c-detail__btn c-detail__btn--fav"><span>お気に入りに入れる</span></div>
+                    <div class="c-btn c-btn--cart"><span>カートに追加する</span></div>
+                    <div class="c-btn c-btn--fav"><span>お気に入りに入れる</span></div>
                     <div class="l-itemDetail__trigger" item-accordion="trigger">商品の説明を見る</div>
                     <div class="l-itemDetail__text" item-accordion="targt" data-item-parts="text"></div>
                 </div>
@@ -213,6 +213,49 @@
 			<div class="c-loader__line"></div>
 			<div class="c-loader__line"></div>
 			<div class="c-loader__line"></div>
+		</div>
+	</div>
+
+    <div class="c-modal" modal-menu="target">
+		<div class="c-modal__inner">
+			<div class="c-modal__close">✕</div>
+			<h3 class="c-modal__title">ショッピングカート(<span class="cart-total-num">2</span>点)</h3>
+            <ul id="cart-list" class="c-itemList c-cart">
+                <li class="c-item" data-item-id="2">
+                    <a href="detail.html?id=2">
+                        <div class="c-item__cap">
+                            <img src="/assets/img/item/2.png" loading="lazy">
+                        </div>
+                        <div class="c-item__info">
+                            <h3 class="c-item__name">ジャケット</h3>
+                            <p class="c-item__text">テーラーホワイト（tailor）は仕立屋という意味があり、キレイに仕立てられたメンズの上着をテーラードジャケット</p>
+                            <div class="c-item__price">¥1800</div>
+                        </div>
+                    </a>
+                    <div class="c-cart__delate">
+                        <img src="/assets/img/icon_delete.svg">
+                    </div>
+                </li>
+                <li class="c-item" data-item-id="2">
+                    <a href="detail.html?id=2">
+                        <div class="c-item__cap">
+                            <img src="/assets/img/item/2.png" loading="lazy">
+                        </div>
+                        <div class="c-item__info">
+                            <h3 class="c-item__name">ジャケット</h3>
+                            <p class="c-item__text">テーラーホワイト（tailor）は仕立屋という意味があり、キレイに仕立てられたメンズの上着をテーラードジャケット</p>
+                            <div class="c-item__price">¥1800</div>
+                        </div>
+                    </a>
+                    <div class="c-cart__delate">
+                        <img src="/assets/img/icon_delete.svg">
+                    </div>
+                </li>
+            </ul>
+			<div class="c-cart__total">
+				合計金額：<span class="c-cart__price">1000円</span>
+			</div>
+			<a href="" class="c-btn c-btn--buy">購入する</a>
 		</div>
 	</div>
 

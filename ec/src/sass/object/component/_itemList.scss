@@ -34,6 +34,25 @@
                     }
                 }
             }
+            &.c-cart {
+                .c-item {
+                    width: 100%;
+                    padding-bottom: 20px;
+                    border-bottom: 1px solid #f2f2f2;
+                    a {
+                        display: flex;
+                    }
+                    &__cap {
+                        width: 100px;
+                        height: auto;
+                        margin-right: 15px;
+                        margin-bottom: 0;
+                    }
+                    &__info {
+                        width: calc(100% - 100px - 15px);
+                    }
+                }
+            }
         }
         &__cap {
             margin-bottom: 5px;
