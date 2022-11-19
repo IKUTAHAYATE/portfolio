@@ -420,7 +420,20 @@ $(() => {
                         _self.doneFlash(`${text}から外しました。`);
                     }
                 })
-            }            
+            }         
+            
+            // お気に入りに追加したアイテムをページ下部に表示
+            showFav() {
+                const fav_storage = JSON.parse(localStorage.getItem('ninco_fav'));
+                if( fav_storage !== null ){
+                    const fav_items = item_data.filter((item) => {
+                        if( fav_storage.indexOf(item['id']) !== -1 ){
+                            return item;
+                        }
+                    });
+                    $('[data-item-list="fav"]').append(createDom(fav_items));
+                }
+            }
 
             execution() {
                 const _self = this;
@@ -460,6 +473,7 @@ $(() => {
 
                 this.addType($('.c-btn--cart'), 'cart', 'カート')
                 this.addType($('.c-btn--fav'), 'fav', 'お気に入り')
+                this.showFav();
                 this.storageDelete()
                 this.strageBuy();
             }
