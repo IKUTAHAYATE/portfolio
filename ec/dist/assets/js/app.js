@@ -5,12 +5,18 @@ $(window).on('load', () => { $('.c-loader').fadeOut(); })
 
 $(() => {
     // ページタイプの条件
-    const page_type = $('body').attr('id');
-    const page_type_criteria = {
+    const page_type = $('body').attr('id'),
+        page_type_criteria = {
         top: page_type === 'page-top',
         list: page_type === 'page-list',
         detail: page_type === 'page-detail'
     }
+
+    // URLのパラメータ取得
+    const param_key = location.search.substring(1).split('=')[0],
+            param_value = location.search.substring(1).split('=')[1];
+
+    // アイテムののDomを生成
     const createDom = (items, delate_btn_flg = null) => {
         let html_template = '';
         let delate_dom = '';
@@ -34,10 +40,28 @@ $(() => {
         })
         return html_template;
     }
+
+    // イベント発生時2秒間のラグで更新処理
     const cartReload =  () => {
-        setTimeout(() => {
-            location.reload();
-        }, 200);
+        setTimeout(() => { location.reload(); }, 200)
+    }
+
+    // 詳細ページ表示処理
+    const getItemSingle = () => {
+        return item_data.find((item) => {
+            return item['id'] === Number(param_value);
+        })
+    }
+    const item_detail = getItemSingle();
+    
+    // 詳細ページのアイテム表示処理
+    const getItem = () => {
+        Object.keys(item_detail).forEach((key) =>  {
+            $(`[data-item-parts="${key}"]`).text(item_detail[key]);
+        })
+        $('.l-itemDetail').attr('data-item-id', item_detail['id']);
+        $('[data-item-parts="img"]').attr('src', `assets/img/item/${item_detail['id']}.png`);
+        if( !item_detail['new'] )$('[data-item="new"]').remove();
     }
 
     // slickをトップページのみ適用
@@ -163,7 +187,7 @@ $(() => {
             }
         }
 
-        // 商品説明アコーディオン
+        // アイテム詳細説明アコーディオン
         class ItemAccordion extends Animation {
             process() {
                 $(this.trigger).on('click', (e) => {
@@ -176,10 +200,8 @@ $(() => {
         animation.execution();
     }
 
-    // 各商品の出し分け処理
+    // 各アイテムの出し分け処理
     const addItems = () => {
-        const param_key = location.search.substring(1).split('=')[0],
-            param_value = location.search.substring(1).split('=')[1];
         class Item {
             execution() {
                 const itemList = new ItemList(),
@@ -211,15 +233,16 @@ $(() => {
                         $('#price-form').submit();
                     })
 
-                    // リストページ検索した商品が10個以下の場合「もっと見る」削除
+                    // リストページ検索したアイテムが10個以下の場合「もっと見る」削除
                     if ($('#sort-list').find('.c-item').length <= 10) $('[data-more-btn="items"]').hide();
                 }
 
+                // 詳細ページアイテム表示
                 if ( page_type_criteria.detail ) {
-                    const showDetail =  new ShowDetail();
-                    showDetail.getItem();
+                    getItem();
                 }
             }
+
             // picupのitemランダムで6つ出す処理
             pickUpShuffle(item_data) {
                 let items = [],
@@ -237,6 +260,7 @@ $(() => {
                 return items;
             }
         }
+
         // item_dataに入っているオブジェクトを条件で出し分けて返す
         class ItemList {
             getItemList(key, value = null) {
@@ -272,27 +296,10 @@ $(() => {
                             break;
                     }
                 })
+
                 // 検索機能(フリーワード)の処理
                 searchWordShow();
                 return items;
-            }
-        }
-
-        // 詳細ページ表示処理
-        class ShowDetail {
-            getItemSingle() {
-                return item_data.find((item) => {
-                   return item['id'] === Number(param_value);
-                })
-            }
-            getItem() {
-                const item_detail = this.getItemSingle();
-                Object.keys(item_detail).forEach((key) =>  {
-                    $(`[data-item-parts="${key}"]`).text(item_detail[key]);
-                })
-                $('.l-itemDetail').attr('data-item-id', item_detail['id']);
-                $('[data-item-parts="img"]').attr('src', `assets/img/item/${item_detail['id']}.png`);
-                if( !item_detail['new'] )$('.new-label').remove();
             }
         }
 
@@ -303,7 +310,7 @@ $(() => {
 
     // リストページもっと見るボタン処理
     const moreButton = () => {
-        // ブランドは3つずつ、商品は10つずつ表示させる
+        // ブランドは3つずつ、アイテムは10つずつ表示させる
         const more_count = {
             'brand': 3,
             'items': 10
@@ -313,6 +320,8 @@ $(() => {
                 this.brand = brand;
                 this.items = items;
             }
+
+            // アイテムやブランドの数分だけ表示処理
             moreControl(el, num) {
                 const more_type = $(el).attr('data-more-btn'),
                     target_list = $(`[data-more-list="${more_type}"]`),
@@ -321,6 +330,7 @@ $(() => {
                 target_list.find(`li:lt(${more_count[more_type]})`).fadeIn();
                 if( more_count[more_type] >= max_count )$(el).hide();
             }
+
             execution() {
                 const _self = this;
                 $('[data-more-btn="brand"]').on('click',(e) => {
@@ -344,46 +354,50 @@ $(() => {
     const storage = () => {
         class StorageControl {
             // ローカルストレージにidが入っているか判定
-            storageJudge(id) {
-                let storage_data = JSON.parse(localStorage.getItem('ninco_cart'));
+            storageJudge(id, storage_type) {
+                let storage_data = JSON.parse(localStorage.getItem(`ninco_${storage_type}`));
                 id = Number(id);
                 if( storage_data !== null ){
                     return storage_data.indexOf(id) !== -1;
                 }
             }
+
             // ローカルストレージの中身がnullの場合idをセットする
-            storageSet(id) {
-                let storage_data = JSON.parse(localStorage.getItem('ninco_cart'));
+            storageSet(id, storage_type) {
+                let storage_data = JSON.parse(localStorage.getItem(`ninco_${storage_type}`));
                 id = Number(id);
-                if( storage_data === null ){
+                if( storage_data === null ) {
                     storage_data = [id];
                 }else{
-                    if( this.storageJudge(id) ){
+                    if( this.storageJudge(id, storage_type) ){
                         storage_data.splice(storage_data.indexOf(id), 1);
                     }else{
                         storage_data.push(id);
                     }
                 }
-                localStorage.setItem('ninco_cart', JSON.stringify(storage_data));                
+                localStorage.setItem(`ninco_${storage_type}`, JSON.stringify(storage_data));                
             }
+
             // カートに追加する押下時の処理
             doneFlash(text) {
                 $('body').append(`<div class="c-cart__flash">${text}</div>`);
                 cartReload();
             }
+            
+            //カートからアイテムを削除
             storageDelete() {
                 const _self = this;
-                //カートからアイテムを削除
                 $('.c-cart__delete').on('click', (e) => {
                     if( confirm('本当に削除して良いですか?') ){
                         const item_id = $(e.currentTarget).parents('[data-item-id]').attr('data-item-id');
-                        _self.storageSet(item_id);
+                        _self.storageSet(item_id, 'cart');
                         cartReload();
                     }
-                });
+                })
             }
+
+            //購入ボタンを押したときの処理
             strageBuy() {
-                //購入ボタンを押したときの処理
                 $('.c-btn--buy').on('click', (e) => {
                     e.preventDefault();
                     if( confirm('購入して良いですか?') ){
@@ -391,21 +405,25 @@ $(() => {
                         alert('購入しました！');
                         cartReload();
                     }
-                });
+                })
             }
-            execution() {
+
+            //カート、お気に入りに追加
+            addType($trigger, type, text) {
                 const _self = this;
-                //カートに追加
-                $('.c-btn--cart').on('click', (e) => {
+                $trigger.on('click', (e) => {
                     const item_id = $(e.currentTarget).parents('.l-itemDetail').attr('data-item-id');
-                    _self.storageSet(item_id, 'cart');
-                    if( _self.storageJudge(item_id, 'cart') ){
-                        _self.doneFlash('カートに追加しました。');
+                    _self.storageSet(item_id, type);
+                    if( _self.storageJudge(item_id, type) ){
+                        _self.doneFlash(`${text}に追加しました。`);
                     }else{
-                        _self.doneFlash('カートから外しました。');
+                        _self.doneFlash(`${text}から外しました。`);
                     }
                 })
+            }            
 
+            execution() {
+                const _self = this;
                 //カートに入れたアイテムを生成
                 const cart_storage = JSON.parse(localStorage.getItem('ninco_cart'));
                 let cart_price = 0;
@@ -427,6 +445,21 @@ $(() => {
                 }else {
                     $('.c-controls__batch').hide();
                 }
+
+                // 詳細ページの時
+                if( page_type === 'page-detail' ){
+                    const storage_types = ['cart', 'fav'];
+                    
+                    // ストレージのタイプに合わせてボタンの状態変更処理
+                    storage_types.forEach(function(type){
+                        if( _self.storageJudge(item_detail['id'], type) ){
+                            $(`.c-btn--${type}`).addClass('is-storage');
+                        }
+                    })
+                }
+
+                this.addType($('.c-btn--cart'), 'cart', 'カート')
+                this.addType($('.c-btn--fav'), 'fav', 'お気に入り')
                 this.storageDelete()
                 this.strageBuy();
             }
