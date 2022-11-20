@@ -18,6 +18,11 @@ export const runAnimation = () => {
 			document.querySelectorAll<HTMLElement>('.l-itemDetail__sizeItem'),
 			document.getElementById('js-item-size')
 		).clickEventHandler();
+		
+		new ItemAccordion(
+			document.getElementById('js-itemDetail__trigger'),
+			document.getElementById('js-itemDetail__target')
+		)
 	}
 
 	// ハンバーガーメニュー
@@ -60,6 +65,20 @@ export const runAnimation = () => {
 					}
 				})
 			})
+		}
+	}
+
+	// 詳細ページのアイテム詳細説明アコーディオン
+	class ItemAccordion implements Animations {
+		constructor(
+			public $trigger: HTMLElement,
+			public $target: HTMLElement
+		) {
+			$trigger.addEventListener('click', this.clickEventHandler.bind(this));
+		}
+		clickEventHandler() {
+			this.$trigger.classList.toggle(isActive);
+			this.$target.classList.toggle(isActive);
 		}
 	}
 

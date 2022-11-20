@@ -87,7 +87,10 @@
         }
         &__text {
             margin-top: 18px;
-	        // display: none;
+	        display: none;
+            &.is-active {
+                display: block;
+            }
         }
         &__review {
             display: flex;
