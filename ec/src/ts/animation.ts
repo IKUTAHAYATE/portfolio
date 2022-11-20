@@ -1,3 +1,5 @@
+import { page_type_criteria } from './common';
+
 export const runAnimation = () => {
 	const isActive = 'is-active';
 
@@ -14,20 +16,29 @@ export const runAnimation = () => {
 			document.getElementById('js-hamburger-trigger'),
 			document.getElementById('js-hamburger-target')
 		)
-		new SizeBind(
-			document.querySelectorAll<HTMLElement>('.l-itemDetail__sizeItem'),
-			document.getElementById('js-item-size')
-		).clickEventHandler();
-		
-		new ItemAccordion(
-			document.getElementById('js-itemDetail__trigger'),
-			document.getElementById('js-itemDetail__target')
+
+		new Modal(
+			document.getElementById('js-modal-trigger'),
+			document.getElementById('js-modal-target')
 		)
 
-		new Review(
-			document.querySelectorAll<HTMLElement>('.l-itemDetail__reviewItem'),
-			document.getElementById('js-item-review')
-		)
+		// 詳細ページのみ処理実行
+		if ( page_type_criteria.detail ) {
+			new SizeBind(
+				document.querySelectorAll<HTMLElement>('.l-itemDetail__sizeItem'),
+				document.getElementById('js-item-size')
+			).clickEventHandler();
+			
+			new ItemAccordion(
+				document.getElementById('js-itemDetail__trigger'),
+				document.getElementById('js-itemDetail__target')
+			)
+	
+			new Review(
+				document.querySelectorAll<HTMLElement>('.l-itemDetail__reviewItem'),
+				document.getElementById('js-item-review')
+			)
+		}
 	}
 
 	// ハンバーガーメニュー
@@ -119,6 +130,19 @@ export const runAnimation = () => {
 			// 評価の数字を変更処理
 			const review_text = String(this.review_num);
 			this.$target.textContent = review_text;
+		}
+	}
+
+	// ヘッダー部カートアイコン押下時のモーダル処理
+	class Modal implements Animations {
+		constructor(
+			public $trigger: HTMLElement,
+			public $target: HTMLElement
+		) {
+			$trigger.addEventListener('click', this.clickEventHandler.bind(this));
+		}
+		clickEventHandler() {
+			this.$target.classList.toggle(isActive);
 		}
 	}
 

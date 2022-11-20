@@ -2,6 +2,36 @@
 @use "../../foundation/color" as color;
 
 .c- {
+	&cart {
+		&__total {
+			margin-top: 20px;
+			font-size: 26px;
+			font-weight: bold;
+		}
+		&__price {
+			color: color.$cartBtn-color;
+		}
+		&__delete {
+			cursor: pointer;
+			position: absolute;
+			transform: translateY(-50%);
+			right: 0;
+			bottom: 0;
+			width: 20px;
+		}
+		&__flash{
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			padding: 15px 0;
+			text-align: center;
+			color: #fff;
+			background-color: green;
+			font-weight: bold;
+			z-index: 100;
+		}
+	}
 	&controls {
 		@include mixin.absoluteType(50%, 0, 0, -50%);
 		left: inherit;
