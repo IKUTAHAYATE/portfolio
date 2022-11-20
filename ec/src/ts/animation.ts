@@ -5,7 +5,7 @@ export const runAnimation = () => {
 	interface Animations {
 		readonly $trigger: HTMLElement |  NodeListOf<HTMLElement>;
 		readonly $target: HTMLElement;
-		clickEventHandler: () => void;
+		clickEventHandler: (index?: number) => void;
 	}
 
 	// 処理まとめる
@@ -22,6 +22,11 @@ export const runAnimation = () => {
 		new ItemAccordion(
 			document.getElementById('js-itemDetail__trigger'),
 			document.getElementById('js-itemDetail__target')
+		)
+
+		new Review(
+			document.querySelectorAll<HTMLElement>('.l-itemDetail__reviewItem'),
+			document.getElementById('js-item-review')
 		)
 	}
 
@@ -79,6 +84,41 @@ export const runAnimation = () => {
 		clickEventHandler() {
 			this.$trigger.classList.toggle(isActive);
 			this.$target.classList.toggle(isActive);
+		}
+	}
+
+	// 詳細ペーレビュー機能実装
+	class Review implements Animations {
+		review_num = 3;
+		constructor(
+			public $trigger:  NodeListOf<HTMLElement>,
+			public $target: HTMLElement
+		) {
+			this.$trigger.forEach((element, index) => {
+				// クリック処理
+				this.$trigger[index].addEventListener('click', () =>  { this.clickEventHandler(index) })
+			})
+		}
+		clickEventHandler(index: number) {
+			const _selfIndex = index + 1;
+			// 同じ数値の場合
+			if( this.review_num === _selfIndex ){
+				this.$trigger.forEach((element) => {
+					element.classList.remove(isActive);
+				})
+				this.review_num = 0;
+			}else {
+				this.review_num = _selfIndex;
+				this.$trigger.forEach((element) => {
+					element.classList.remove(isActive);
+				})
+				for (let i = 0; i < this.review_num; i++) {
+					this.$trigger[i].classList.add(isActive)
+				}
+			}
+			// 評価の数字を変更処理
+			const review_text = String(this.review_num);
+			this.$target.textContent = review_text;
 		}
 	}
 
