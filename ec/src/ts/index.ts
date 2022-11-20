@@ -1,9 +1,4 @@
 import '../sass/style.scss';
-const hello: string = 'hello';
+import { loadFinished } from './common';
 
-console.log(hello);
-
-const add = (a: number, b: number) => {
-    return a + b;
-}
-console.log(add(1, 8));
+window.addEventListener('load', loadFinished);
