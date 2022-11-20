@@ -75,8 +75,11 @@
                 left: 100%;
                 background: rgba(255,255,255,0.95);
                 height: 100vh;
-                z-index: 1;
+                z-index: 10;
                 transition: all 0.4s;
+                &.is-active {
+                    left: 0;
+                }
             }
             &__logo {
                 width: 70px;
@@ -98,8 +101,16 @@
                 }
             }
         }
+        &menu {
+            top: 40%;
+            left: 50%;
+            font-size: 15px;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            text-align: center;
+        }
     }
-    #js-hamburger {
+    #js-hamburger-trigger {
         @include mixin.absoluteType(50%, inherit, 0, -50%);
         right: 10px;
         transition: all 0.4s;
@@ -123,6 +134,19 @@
             }
             &:nth-of-type(3) {
                 bottom: 0;
+            }
+        }
+        &.is-active {
+            span {
+                &:nth-of-type(1) {
+                    transform: translateY(9px) rotate(-315deg);
+                }
+                &:nth-of-type(2) {
+                    opacity: 0;
+                }
+                &:nth-of-type(3) {
+                    transform: translateY(-9px) rotate(315deg);
+                }                
             }
         }
     }

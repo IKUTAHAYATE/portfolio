@@ -23,6 +23,7 @@
         &.is-active {
             animation : fadeOut 1s;
             animation-fill-mode: both;
+            z-index: -1;
         }
         position: fixed;
         top: 0;
