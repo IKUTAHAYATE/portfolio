@@ -11,14 +11,21 @@ export const addItems = () => {
 
         getItemList(key: string, value?: string|null) {
             const search_value = value ? value : this.param_value;
-            const items = item_data.filter(function(item) {
+            const items = item_data.filter((item: Itemdata) => {
                 switch(key){
                     case 'brand':
                     case 'category':
-                        return item[key] === search_value
+                        return item[key] === search_value;
+                        break;
+                    case 'freeword':
+                            return item['name'].indexOf(decodeURI(this.param_value)) !== -1 ||
+                                item['text'].indexOf(decodeURI(this.param_value)) !== -1;
                         break;
                     case 'new':
-                        return item['new']
+                        return item['new'];
+                        break;
+                    case 'price': 
+                        return item['price'] <= Number(search_value);
                         break;
                 }
             });
@@ -41,6 +48,19 @@ export const addItems = () => {
 			}
 			return items;
 		}
+
+        // 検索条件の出し分け
+			searchWordShow() {
+                let result_text: string;
+                if( this.param_key === 'price' ){
+                    result_text = `〜${this.param_value}円`;
+                }
+                else{
+                    result_text = this.param_value;
+                }
+                const resultTextArea = document.getElementById('js-result-text');
+                resultTextArea.textContent= decodeURI(result_text);
+            }
 
         // 実行
         execution() {
@@ -65,6 +85,8 @@ export const addItems = () => {
                 // menubar,woman,kidsのカテゴリ選択時の処理
                 const categoryItem = document.getElementById('js-more-item');
                 categoryItem.innerHTML = createDom(this.getItemList(this.param_key));
+                // 検索form実行時の処理
+                this.searchWordShow();
             }
 
             // item_dataのpickupのitem表示

@@ -27,7 +27,7 @@
 					</a>
 				</div>
 			</div>
-			<form class="l-header__search" action="" autocomplete="off" method="GET">
+			<form class="l-header__search" action="list.html" autocomplete="off" method="GET">
 				<button type="submit"></button>
 				<input type="text" placeholder="何かお探しですか？" name="freeword">
 			</form>
@@ -63,9 +63,9 @@
                     <section class="l-sidebar__inner">
                         <h3 class="l-sidebar__title">価格</h3>
                         <div class="l-sidebar__body">
-                            <form action="list.html" method="GET">
+                            <form name="priceform" action="list.html" method="GET" onchange="submit(this.form)">
                                 <div class="l-sidebar__priceSelect__wrap">
-                                    <select name="price" class="l-sidebar__priceSelect">
+                                    <select id="js-select-price" name="price" class="l-sidebar__priceSelect">
                                         <option hidden="">価格を選択する</option>
                                         <option value="1000">〜1000円</option>
                                         <option value="2000">〜2000円</option>
@@ -125,7 +125,7 @@
                 
                 <section class="l-item">
                     <div class="c-titleHead">
-                        <h2 class="c-title">シャツ</h2>
+                        <h2 id="js-result-text" class="c-title">シャツ</h2>
                     </div>
                     <ul id="js-more-item" class="c-itemList"></ul>
                     <div class="l-sidebar__more" data-more="item">もっと見る＋</div>
