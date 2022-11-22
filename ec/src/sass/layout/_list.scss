@@ -34,6 +34,12 @@
                 padding-bottom: 10px;
                 margin-bottom: 10px;
             }
+            &:nth-child(n+4) {
+                display: none;
+            }
+            &.is-active {
+                display: block;
+            }
         }
         &__priceSelect {
             &__wrap {
@@ -64,6 +70,10 @@
             display: inline-block;
             padding: 5px 10px;
             color: #fff;
+        }
+        & + .l-item {
+            float: left;
+            width: calc(100% - 200px - 40px);
         }
     }
 }

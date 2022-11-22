@@ -6,6 +6,12 @@
         position: relative;
         width: calc(100% / 5);
         margin-bottom: 20px;
+        &:nth-child(n + 11) {
+            display: none;
+        }
+        &.is-active {
+            display: block;
+        }
         &List {
             display: flex;
             flex-wrap:wrap;
