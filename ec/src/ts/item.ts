@@ -5,12 +5,17 @@ import { createDom, page_type_criteria, Itemdata } from './common';
 export const addItems = () => {
     class ItemList {
         categorys = ['men', 'woman', 'kids'];
+        // URLのパラメータ取得
+        param_key = location.search.substring(1).split('=')[0];
+        param_value = location.search.substring(1).split('=')[1];
 
         getItemList(key: string, value?: string|null) {
+            const search_value = value ? value : this.param_value;
             const items = item_data.filter(function(item) {
                 switch(key){
+                    case 'brand':
                     case 'category':
-                        return item[key] == value
+                        return item[key] === search_value
                         break;
                     case 'new':
                         return item['new']
@@ -54,6 +59,14 @@ export const addItems = () => {
                     categoryContent.innerHTML = item_list_category;
                 })
             }
+
+            // リストページ時の処理
+            if (page_type_criteria.list) {
+                // menubar,woman,kidsのカテゴリ選択時の処理
+                const categoryItem = document.getElementById('js-more-item');
+                categoryItem.innerHTML = createDom(this.getItemList(this.param_key));
+            }
+
             // item_dataのpickupのitem表示
 			let item_list_pickup = createDom(this.pickUpShuffle(item_data));
             const picupContent = document.getElementById('js-item-pickup');
