@@ -43,13 +43,12 @@
         <div id="page-detail" class="l-contents">
             <div class="l-itemDetail">
                 <div class="l-itemDetail__main">
-                    <img src="./assets/img/item/2_l.png" alt="">
-                    <p>画像にマウスを合わせると拡大します</p>
+                    <img id="js-item-img" src="./assets/img/item/2_l.png" alt="">
                 </div>
                 <div class="l-itemDetail__info">
-                    <div class="is-new">New</div>
-                    <h2 class="l-itemDetail__name">シャツ</h2>
-                    <div class="l-itemDetail__brand">BRAND：<span>AAA</span></div>
+                    <div id="js-item-new" class="is-new">New</div>
+                    <h2 id="js-item-name" class="l-itemDetail__name"></h2>
+                    <div class="l-itemDetail__brand">BRAND：<span id="js-item-brand">AAA</span></div>
                     <div class="l-itemDetail__size">
                         <div class="l-itemDetail__sizeSelect">Select Size：<span id="js-item-size">ー</span></div>
                         <ul class="l-itemDetail__sizeList">
@@ -62,13 +61,11 @@
                             <li class="l-itemDetail__sizeItem">190</li>
                         </ul>
                     </div>
-                    <div class="l-itemDetail__price">¥<span>1800</span></div>
-                    <div class="c-detail__btn c-detail__btn--cart"><span>カートに追加する</span></div>
-                    <div class="c-detail__btn c-detail__btn--fav"><span>お気に入りに入れる</span></div>
-                    <div id="js-itemDetail__trigger" class="l-itemDetail__trigger">商品の説明を見る</div>
-                    <div id="js-itemDetail__target" class="l-itemDetail__text">
-                        テーラーホワイト（tailor）は仕立屋という意味があり、キレイに仕立てられたメンズの上着をテーラードジャケット
-                    </div>
+                    <div class="l-itemDetail__price">¥<span id="js-item-price">ー</span></div>
+                    <div class="c-btn c-btn--cart"><span>カートに追加する</span></div>
+                    <div class="c-btn c-btn--fav"><span>お気に入りに入れる</span></div>
+                    <div id="js-item-text" class="l-itemDetail__trigger" item-accordion="trigger">商品の説明を見る</div>
+                    <div id="js-itemDetail__target" class="l-itemDetail__text"></div>
                 </div>
             </div>
     

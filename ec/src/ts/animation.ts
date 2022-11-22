@@ -30,7 +30,7 @@ export const runAnimation = () => {
 			).clickEventHandler();
 			
 			new ItemAccordion(
-				document.getElementById('js-itemDetail__trigger'),
+				document.getElementById('js-item-text'),
 				document.getElementById('js-itemDetail__target')
 			)
 	

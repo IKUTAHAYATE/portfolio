@@ -3,7 +3,7 @@
 @use "../../foundation/color" as color;
 
 .c- {
-    &detail__btn {
+    &btn {
         height: 60px;
         line-height: 60px;
         text-align: center;
@@ -28,7 +28,7 @@
         }
         &--cart {
             background: color.$link-color;
-            &.is-active {
+            &.is-storage {
                 background: #ccc;
             }
             span {
@@ -40,7 +40,7 @@
         &--fav {
             background: #fff;
 	        color: #333;
-            .is-active {
+            &.is-storage {
                 background: #ccc;
             }
             span {
@@ -48,6 +48,10 @@
                     background: url(image.$iconHeart) center/cover no-repeat;
                 }
             }
+        }
+        &--buy {
+            background: color.$cartBtn-color;;
+            color: #fff;
         }
     }
 }

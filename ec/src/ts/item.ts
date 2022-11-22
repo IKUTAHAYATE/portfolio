@@ -50,17 +50,24 @@ export const addItems = () => {
 		}
 
         // 検索条件の出し分け
-			searchWordShow() {
-                let result_text: string;
-                if( this.param_key === 'price' ){
-                    result_text = `〜${this.param_value}円`;
-                }
-                else{
-                    result_text = this.param_value;
-                }
-                const resultTextArea = document.getElementById('js-result-text');
-                resultTextArea.textContent= decodeURI(result_text);
+        searchWordShow() {
+            let result_text: string;
+            if( this.param_key === 'price' ){
+                result_text = `〜${this.param_value}円`;
             }
+            else{
+                result_text = this.param_value;
+            }
+            const resultTextArea = document.getElementById('js-result-text');
+            resultTextArea.textContent= decodeURI(result_text);
+        }
+
+        // 詳細ページの情報取得
+        getItemSingle() {
+            return item_data.find((item) => {
+                return item['id'] === Number(this.param_value);
+            })
+        }
 
         // 実行
         execution() {
@@ -89,6 +96,17 @@ export const addItems = () => {
                 this.searchWordShow();
             }
 
+            if (page_type_criteria.detail) {
+                // 詳細ページのアイテム詳細表示
+                const item_detail = this.getItemSingle();
+                document.getElementById('js-item-name').textContent = String(item_detail['name']);
+                document.getElementById('js-item-price').textContent = String(item_detail['price']);
+                document.getElementById('js-item-brand').textContent = String(item_detail['brand']);
+                document.getElementById('js-itemDetail__target').textContent = String(item_detail['text']);
+                document.getElementById('js-item-img').setAttribute('src', `/assets/img/item/${item_detail['id']}.png`);
+                if (!item_detail['new']) document.getElementById('js-item-new').remove();
+            }
+
             // item_dataのpickupのitem表示
 			let item_list_pickup = createDom(this.pickUpShuffle(item_data));
             const picupContent = document.getElementById('js-item-pickup');
@@ -99,4 +117,5 @@ export const addItems = () => {
     // インスタンス化
     const itemList = new ItemList();
     itemList.execution();
+    itemList.getItemSingle();
 }
