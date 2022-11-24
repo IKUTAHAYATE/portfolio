@@ -140,6 +140,10 @@ export const runAnimation = () => {
 			public $target: HTMLElement
 		) {
 			$trigger.addEventListener('click', this.clickEventHandler.bind(this));
+			document.getElementsByClassName('c-modal__close')[0]
+				.addEventListener('click', () => {
+					$target.classList.remove(isActive);
+				})
 		}
 		clickEventHandler() {
 			this.$target.classList.toggle(isActive);

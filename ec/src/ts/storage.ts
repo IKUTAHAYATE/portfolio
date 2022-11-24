@@ -1,4 +1,5 @@
-import { cartReload } from './common';
+import { item_data } from './item_data';
+import { cartReload, createDom } from './common';
 
 // ローカルストレージにカート処理
 export const storage = () => {
@@ -34,6 +35,21 @@ export const storage = () => {
             cartReload();
         }
 
+		// カートに追加するに選択したアイテムをローカルストレージベースでショッピングカートに追加
+		getCartDetail() {
+			//カートに入れたアイテムを生成
+			const cart_storage = JSON.parse(localStorage.getItem('ninco_cart'));
+			if( cart_storage !== null ){
+				const cart_items = item_data.filter(function(item) {
+					if( cart_storage.indexOf(item['id']) !== -1 ){
+						return item;
+					}
+				});
+				const cartList = document.getElementById('cart-list');
+				cartList.innerHTML = createDom(cart_items);
+			}
+		}
+
 		execution() {
 			//カートに追加
 			const btnCart = document.getElementsByClassName('c-btn--cart')[0];
@@ -46,6 +62,7 @@ export const storage = () => {
 					this.doneFlash('カートから外しました。');
 				}
 			})
+			this.getCartDetail()
 		}
 	}
 	const storageControl = new StorageControl();
