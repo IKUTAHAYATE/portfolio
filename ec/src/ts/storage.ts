@@ -4,6 +4,8 @@ import { cartReload, createDom } from './common';
 // ローカルストレージにカート処理
 export const storage = () => {
 	class StorageControl {
+		itemId = Number(document.getElementsByTagName('body')[0].dataset.name);
+
 		// ローカルストレージにidが入っているか判定
         storageJudge(id: number, storage_type: string) :boolean {
             let storage_data = JSON.parse(localStorage.getItem(`ninco_${storage_type}`));
@@ -48,6 +50,7 @@ export const storage = () => {
 					}
 				});
 				const cartList = document.getElementById('cart-list');
+				
 				//カートの合計金額を出力
 				document.getElementsByClassName('c-cart__price')[0].textContent = cart_price + '円';
 				//カートの合計点数を計算
@@ -56,6 +59,7 @@ export const storage = () => {
 					document.getElementsByClassName('c-controls__batch')[0].remove();
 				}
 				cartList.innerHTML = createDom(cart_items, true);
+				this.storageDelete(this.itemId);
 			}else {
 				document.getElementsByClassName('c-controls__batch')[0].remove();
 			}
@@ -64,7 +68,7 @@ export const storage = () => {
 		//カートからアイテムを削除
         storageDelete(id: number) {
 			const cartDelete  = document.getElementsByClassName('c-cart__delete')[0];
-			cartDelete.addEventListener('click', (e) => {
+			cartDelete.addEventListener('click', () => {
                 if( confirm('本当に削除して良いですか?') ){
                     this.storageSet(id, 'cart');
                     cartReload();
@@ -72,20 +76,32 @@ export const storage = () => {
             })
         }
 
+		//購入ボタンを押したときの処理
+        strageBuy() {
+			const cartBuy = document.getElementsByClassName('c-btn--buy')[0];
+			cartBuy.addEventListener('click', (e) => {
+				e.preventDefault();
+				if( confirm('購入して良いですか?') ){
+					localStorage.removeItem('ninco_cart');
+					alert('購入しました！');
+					cartReload();
+				}
+            })
+        }
+
 		execution() {
 			//カートに追加
 			const btnCart = document.getElementsByClassName('c-btn--cart')[0];
-			const itemId = Number(document.getElementsByTagName('body')[0].dataset.name);
 			btnCart.addEventListener('click', () => {
-				this.storageSet(itemId, 'cart');
-				if( this.storageJudge(itemId, 'cart') ){
+				this.storageSet(this.itemId, 'cart');
+				if( this.storageJudge(this.itemId, 'cart') ){
 					this.doneFlash('カートに追加しました。');
 				}else{
 					this.doneFlash('カートから外しました。');
 				}
 			})
 			this.getCartDetail();
-			this.storageDelete(itemId);
+			this.strageBuy();
 		}
 	}
 	const storageControl = new StorageControl();
