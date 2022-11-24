@@ -1,5 +1,5 @@
 import { item_data } from './item_data';
-import { cartReload, createDom } from './common';
+import { cartReload, createDom, page_type_criteria } from './common';
 
 // ローカルストレージにカート処理
 export const storage = () => {
@@ -76,6 +76,33 @@ export const storage = () => {
             })
         }
 
+		//カート、お気に入りに追加
+        addType($trigger: Element, type: string, text: string) {
+			//カートに追加
+			$trigger.addEventListener('click', () => {
+				this.storageSet(this.itemId, type);
+				if( this.storageJudge(this.itemId, type) ){
+					this.doneFlash(`${text}に追加しました。`);
+				}else{
+					this.doneFlash(`${text}から外しました。`);
+				}
+			})
+        }
+
+		// お気に入りに追加したアイテムをページ下部に表示
+        showFav() {
+            const fav_storage = JSON.parse(localStorage.getItem('ninco_fav'));
+			const item_listFav = document.getElementById('js-item-fav');
+            if( fav_storage !== null ){
+                const fav_items = item_data.filter((item) => {
+                    if( fav_storage.indexOf(item['id']) !== -1 ){
+                        return item;
+                    }
+                });
+				item_listFav.innerHTML = createDom(fav_items);
+            }
+        }
+
 		//購入ボタンを押したときの処理
         strageBuy() {
 			const cartBuy = document.getElementsByClassName('c-btn--buy')[0];
@@ -90,16 +117,15 @@ export const storage = () => {
         }
 
 		execution() {
-			//カートに追加
-			const btnCart = document.getElementsByClassName('c-btn--cart')[0];
-			btnCart.addEventListener('click', () => {
-				this.storageSet(this.itemId, 'cart');
-				if( this.storageJudge(this.itemId, 'cart') ){
-					this.doneFlash('カートに追加しました。');
-				}else{
-					this.doneFlash('カートから外しました。');
-				}
-			})
+			const cartBtn = document.getElementsByClassName('c-btn--cart')[0];
+			const favBtn = document.getElementsByClassName('c-btn--fav')[0];
+
+			// 詳細ページの時
+            if( page_type_criteria.detail ){
+				this.addType(cartBtn, 'cart', 'カート')
+				this.addType(favBtn, 'fav', 'お気に入り')
+            }
+			this.showFav();
 			this.getCartDetail();
 			this.strageBuy();
 		}
