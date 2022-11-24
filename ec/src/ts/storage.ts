@@ -39,16 +39,38 @@ export const storage = () => {
 		getCartDetail() {
 			//カートに入れたアイテムを生成
 			const cart_storage = JSON.parse(localStorage.getItem('ninco_cart'));
+			let cart_price = 0;
 			if( cart_storage !== null ){
 				const cart_items = item_data.filter(function(item) {
 					if( cart_storage.indexOf(item['id']) !== -1 ){
+						cart_price += item['price'];
 						return item;
 					}
 				});
 				const cartList = document.getElementById('cart-list');
-				cartList.innerHTML = createDom(cart_items);
+				//カートの合計金額を出力
+				document.getElementsByClassName('c-cart__price')[0].textContent = cart_price + '円';
+				//カートの合計点数を計算
+				document.getElementsByClassName('c-cart__num')[0].textContent = cart_storage.length;
+				if( cart_storage.length <= 0 ){
+					document.getElementsByClassName('c-controls__batch')[0].remove();
+				}
+				cartList.innerHTML = createDom(cart_items, true);
+			}else {
+				document.getElementsByClassName('c-controls__batch')[0].remove();
 			}
 		}
+
+		//カートからアイテムを削除
+        storageDelete(id: number) {
+			const cartDelete  = document.getElementsByClassName('c-cart__delete')[0];
+			cartDelete.addEventListener('click', (e) => {
+                if( confirm('本当に削除して良いですか?') ){
+                    this.storageSet(id, 'cart');
+                    cartReload();
+                }
+            })
+        }
 
 		execution() {
 			//カートに追加
@@ -62,7 +84,8 @@ export const storage = () => {
 					this.doneFlash('カートから外しました。');
 				}
 			})
-			this.getCartDetail()
+			this.getCartDetail();
+			this.storageDelete(itemId);
 		}
 	}
 	const storageControl = new StorageControl();
