@@ -3,7 +3,7 @@
         padding-top: 60px;
     }
     &slider {
-        overflow: hidden;
+        overflow: inherit;
         height: 300px;
         margin-bottom: 60px;
         ul {
@@ -13,6 +13,12 @@
         }
         img {
             height: 100%;
+            object-fit: cover;
+        }
+        .swiper {
+            &-pagination {
+                bottom: -30px;
+            }
         }
     }
     &item {
