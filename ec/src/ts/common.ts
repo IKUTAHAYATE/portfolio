@@ -46,3 +46,8 @@ export const createDom = (items: Itemdata[]) => {
 	})
 	return html_template;
 }
+
+// イベント発生時2秒間のラグで更新処理
+export const cartReload =  () => {
+	setTimeout(() => { location.reload(); }, 200)
+}

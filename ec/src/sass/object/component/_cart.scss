@@ -31,6 +31,18 @@
 			font-weight: bold;
 			z-index: 100;
 		}
+		&__flash{
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			padding: 15px 0;
+			text-align: center;
+			color: #fff;
+			background-color: green;
+			font-weight: bold;
+			z-index: 100;
+		}
 	}
 	&controls {
 		@include mixin.absoluteType(50%, 0, 0, -50%);

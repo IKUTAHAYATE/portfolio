@@ -99,6 +99,7 @@ export const addItems = () => {
             if (page_type_criteria.detail) {
                 // 詳細ページのアイテム詳細表示
                 const item_detail = this.getItemSingle();
+                document.getElementsByTagName('body')[0].dataset.name = String(this.param_value);
                 document.getElementById('js-item-name').textContent = String(item_detail['name']);
                 document.getElementById('js-item-price').textContent = String(item_detail['price']);
                 document.getElementById('js-item-brand').textContent = String(item_detail['brand']);
