@@ -4,3 +4,8 @@ ec/node_modules
 # dist内.map
 ec/dist/assets/js/main.js.map
 ec/dist/assets/css/style.css.map
+
+# react/ec-app内
+ec-app/node_modules
+ec-app/build
+ec-app/public
