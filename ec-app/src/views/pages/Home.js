@@ -1,10 +1,9 @@
-import { Link } from 'react-router-dom';
+import Header from '../components/modules/Header'
+
 const Home = () => {
     return (
       	<>
-			<h1>Homeページです</h1>
-			<Link to="/list">Listページ</Link>
-			<Link to="/detail">Detailページ</Link>
+			<Header />
       	</>
     );
   };
