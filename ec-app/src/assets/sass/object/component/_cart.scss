@@ -1,0 +1,83 @@
+@use "../../foundation/mixin" as mixin;
+@use "../../foundation/color" as color;
+
+.c- {
+	&cart {
+		&__total {
+			margin-top: 20px;
+			font-size: 26px;
+			font-weight: bold;
+		}
+		&__price {
+			color: color.$cartBtn-color;
+		}
+		&__delete {
+			cursor: pointer;
+			position: absolute;
+			transform: translateY(-50%);
+			right: 0;
+			bottom: 0;
+			width: 20px;
+		}
+		&__flash{
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			padding: 15px 0;
+			text-align: center;
+			color: #fff;
+			background-color: green;
+			font-weight: bold;
+			z-index: 100;
+		}
+		&__flash{
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			padding: 15px 0;
+			text-align: center;
+			color: #fff;
+			background-color: green;
+			font-weight: bold;
+			z-index: 100;
+		}
+	}
+	&controls {
+		@include mixin.absoluteType(50%, 0, 0, -50%);
+		left: inherit;
+		right: 0;
+		&__cart{
+			position: relative;
+			width: 20px;
+			height: 20px;
+			display: block;
+			margin: 0 auto;
+		}
+		&__batch {
+			position: absolute;
+			top: -9px;
+			right: -15px;
+			background: color.$orange-color;
+			width: 20px;
+			height: 20px;
+			display: block;
+			text-align: center;
+			color: #fff;
+			font-weight: bold;
+			border-radius: 50%;
+			font-size: 12px;
+			line-height: 20px;
+		}
+	}
+}
+
+@media screen and (max-width: 768px) {
+    .c- {
+        &controls {
+			right: 50%;
+    		transform: translate(50%, -50%);
+		}
+    }
+}

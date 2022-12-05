@@ -1,0 +1,35 @@
+.l- {
+    &contents {
+        padding-top: 60px;
+    }
+    &slider {
+        overflow: inherit;
+        height: 300px;
+        margin-bottom: 60px;
+        ul {
+            display: flex;
+            width: 5000px;//仮値
+            height: 100%;
+        }
+        img {
+            height: 100%;
+            object-fit: cover;
+        }
+        .swiper {
+            &-pagination {
+                bottom: -30px;
+            }
+        }
+    }
+    &item {
+        margin: 0 auto 60px auto;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .l- {
+        &contents {
+            padding-top: 45px;
+        }
+    }
+}

@@ -1,0 +1,6 @@
+@mixin absoluteType($top, $left, $x, $y) {
+    position: absolute;
+    top: $top;
+    left: $left;
+    transform: translate($x, $y);
+}

@@ -1,0 +1,111 @@
+@use "../../foundation/color" as color;
+@use "../../foundation/mixin" as mixin;
+
+.c- {
+    &item {
+        position: relative;
+        width: calc(100% / 5);
+        margin-bottom: 20px;
+        &:nth-child(n + 11) {
+            display: none;
+        }
+        &.is-active {
+            display: block;
+        }
+        &List {
+            display: flex;
+            flex-wrap:wrap;
+            &--pickup {
+                justify-content: space-between;
+                .c- {
+                    &item {
+                        width: calc(100% / 2 - 10px);
+                        padding-bottom: 20px;
+                        border-bottom: 1px solid #f2f2f2;
+                        a {
+                            display: flex;
+                        }
+                        &__cap {
+                            width: 100px;
+                            height: auto;
+                            margin-right: 15px;
+                            margin-bottom: 0;
+                        }
+                        &__info {
+                            width: calc(100% - 100px - 15px);
+                        }
+                    }
+                }
+            }
+            &.c-cart {
+                .c-item {
+                    width: 100%;
+                    padding-bottom: 20px;
+                    border-bottom: 1px solid #f2f2f2;
+                    a {
+                        display: flex;
+                    }
+                    &__cap {
+                        width: 100px;
+                        height: auto;
+                        margin-right: 15px;
+                        margin-bottom: 0;
+                    }
+                    &__info {
+                        width: calc(100% - 100px - 15px);
+                    }
+                }
+            }
+        }
+        &__cap {
+            margin-bottom: 5px;
+        }
+        &__info {
+            padding: 0 3px;
+            
+        }
+        &__name {
+            font-weight: bold;
+            font-size: 16px;
+        }
+        &__text {
+            display: -webkit-box;
+            -webkit-box-orient:vertical;
+            -webkit-line-clamp:2;
+            overflow: hidden;
+            font-size: 13px;
+        }
+        &__price {
+            margin-top: 5px;
+            font-weight: bold;
+        }
+        &__more {
+            position: relative;
+            color: color.$link-color;
+            font-weight: bold;
+            font-size: 16px;
+            padding-right: 15px;
+        }
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .c- {
+        &item {
+            width: calc(100% / 2);
+            &__name,
+            &__more {
+                font-size: 13px;
+            }
+            &List {
+                &--pickup {
+                    .c- {
+                        &item {
+                            width: auto;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

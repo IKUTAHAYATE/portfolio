@@ -1,0 +1,23 @@
+@use "../../foundation/color" as color;
+
+.c- {
+    &title {
+		font-size: 30px;
+		font-weight: bold;
+        &Head{
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 20px;
+            border-bottom: 1px solid color.$border-color;
+        }
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .c- {
+        &title{
+            font-size: 20px;
+        }
+    }
+}
