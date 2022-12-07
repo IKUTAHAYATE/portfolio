@@ -1,0 +1,17 @@
+.c- {
+	&slick {
+		.slick-slide {
+			padding: 0 20px;
+		}
+	}
+}
+
+@media screen and (max-width: 768px) {
+    .c- {
+		&slick {
+			.slick-slide {
+				padding: 0;
+			}
+		}
+    }
+}
