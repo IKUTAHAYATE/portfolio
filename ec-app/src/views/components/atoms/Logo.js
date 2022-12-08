@@ -1,5 +1,5 @@
-import { Link } from 'react-router-dom';
-import logo_black from '../../../assets/img/logo_black.png';
+import { Link } from 'react-router-dom'
+import logo_black from '../../../assets/img/logo_black.png'
 
 const Logo = () => {
   return (

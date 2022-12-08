@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom'
 
 const CommonLink = () => {
 	const linkItem =[
@@ -20,7 +20,7 @@ const CommonLink = () => {
 			})}
 		</ul>
 	</>
-  );
-};
+  )
+}
 
 export default CommonLink

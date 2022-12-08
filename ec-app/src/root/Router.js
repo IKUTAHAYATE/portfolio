@@ -18,7 +18,6 @@ function App() {
                     <Route path='/list' element={< List />} />
                     <Route path='/detail' element={< Detail />} />
                     <Route path='/*' element={< Page404 />} />
-                    {/* <Route path='/page2' element={<Navigate to='/page1' />} /> */}
                 </Routes>
             </div>
         </Router>

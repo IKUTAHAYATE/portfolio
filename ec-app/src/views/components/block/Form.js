@@ -6,7 +6,7 @@ const Form = () => {
 			<input type="text" placeholder="何かお探しですか？" name="freeword" />
 		</form>
 	</>
-  );
-};
+  )
+}
 
 export default Form

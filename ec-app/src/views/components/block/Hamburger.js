@@ -1,6 +1,7 @@
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom'
 import Controls from '../atoms/Controls'
-import { useHamburger } from "../modules/Header"
+import { useRecoilState } from 'recoil'
+import hamburgerState from '../../../state/hamburgerState'
 
 const Hamburger = () => {
 	const categoryList = [
@@ -18,7 +19,8 @@ const Hamburger = () => {
 		}
 	]
 
-	const [ hamburger ] = useHamburger();
+
+	const [ hamburger ] = useRecoilState(hamburgerState);
 
 	return (
 		<div id="js-hamburger-target" className={`l-header__links ${hamburger && 'is-active'}`}>
@@ -32,7 +34,7 @@ const Hamburger = () => {
 			</nav>
 			<Controls />
 		</div>
-	);
-};
+	)
+}
 
 export default Hamburger

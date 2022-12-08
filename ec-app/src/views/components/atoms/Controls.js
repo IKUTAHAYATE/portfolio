@@ -1,4 +1,4 @@
-import Icon_cart_black from '../../../assets/img/icon_cart_black.svg';
+import Icon_cart_black from '../../../assets/img/icon_cart_black.svg'
 
 const Controls = () => {
   return (
@@ -8,7 +8,7 @@ const Controls = () => {
 			<span className="c-controls__batch"></span>
 		</div>
 	</div>
-  );
-};
+  )
+}
 
 export default Controls

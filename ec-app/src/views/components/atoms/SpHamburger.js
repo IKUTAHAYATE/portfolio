@@ -1,7 +1,8 @@
-import { useHamburger } from "../modules/Header"
+import { useRecoilState } from 'recoil'
+import hamburgerState from '../../../state/hamburgerState'
 
 const SpHamburger = () => {
-	const [ hamburger, setHamburger ] = useHamburger();
+	const [ hamburger, setHamburger ] = useRecoilState(hamburgerState);
   return (
 	<div
 		onClick={() => hamburger ? setHamburger(false): setHamburger(true) }

@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom'
 
 const BrandItem = () => {
 	const BRAND_LIST = [
@@ -25,7 +25,7 @@ const BrandItem = () => {
 				)
 			})}
 		</ul>
-  	);
-};
+  	)
+}
 
 export default BrandItem

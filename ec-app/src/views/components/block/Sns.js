@@ -1,7 +1,7 @@
-import facebook from '../../../assets/img/facebook.png';
-import twitter from '../../../assets/img/twitter.png';
-import instagram from '../../../assets/img/instagram.png';
-import { Link } from 'react-router-dom';
+import facebook from '../../../assets/img/facebook.png'
+import twitter from '../../../assets/img/twitter.png'
+import instagram from '../../../assets/img/instagram.png'
+import { Link } from 'react-router-dom'
 
 const Sns = () => {
 	const snsList = [
@@ -33,7 +33,7 @@ const Sns = () => {
 			})}
 		</ul>
 	</>
-  );
-};
+  )
+}
 
 export default Sns
