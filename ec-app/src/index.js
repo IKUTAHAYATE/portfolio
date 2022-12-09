@@ -5,8 +5,8 @@ import './assets/sass/style.scss'
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(
-	<React.StrictMode>
+	// <React.StrictMode>
 		<Router />
-	</React.StrictMode>
+	// </React.StrictMode>
 )
 

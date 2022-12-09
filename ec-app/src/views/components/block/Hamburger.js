@@ -14,7 +14,7 @@ const Hamburger = () => {
 			content: "WOMAN",
 		},
 		{
-			param: "kids",	
+			param: "kids",
 			content: "KIDS",
 		}
 	]
