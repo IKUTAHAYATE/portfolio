@@ -2,11 +2,11 @@ import { Link } from 'react-router-dom'
 
 const CommonLink = () => {
 	const linkItem =[
-		"ヘルプ",
-		"お問い合わせ",
-		"利用規約",
-		"採用情報",
-		"© NINCO Co., Ltd."
+		'ヘルプ',
+		'お問い合わせ',
+		'利用規約',
+		'採用情報',
+		'© NINCO Co., Ltd'
 	]
   return (
 	<>

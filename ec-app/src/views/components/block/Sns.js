@@ -7,15 +7,15 @@ const Sns = () => {
 	const snsList = [
 		{
 			src: facebook,
-			content: "FaceBook",
+			content: 'FaceBook',
 		},
 		{
 			src: twitter,
-			content: "Twitter",
+			content: 'Twitter',
 		},
 		{
 			src: instagram,	
-			content: "Instagram",
+			content: 'Instagram',
 		}
 	]
   return (

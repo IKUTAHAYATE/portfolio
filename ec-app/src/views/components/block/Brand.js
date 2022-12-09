@@ -1,4 +1,4 @@
-import BrandItem from "../atoms/BrandItem"
+import BrandItem from '../atoms/BrandItem'
 
 const Brand = () => {
 	return (

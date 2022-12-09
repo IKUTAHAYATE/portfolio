@@ -1,9 +1,9 @@
-import React from "react";
+import React from 'react';
 import {
     BrowserRouter as Router,
     Routes,
     Route
-} from "react-router-dom";
+} from 'react-router-dom';
 import List from '../views/pages/List';
 import Detail from '../views/pages/Detail';
 import Home from '../views/pages/Home';

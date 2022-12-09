@@ -1,7 +1,7 @@
-import React from "react"
-import Slick from "react-slick"
-import "slick-carousel/slick/slick.css"
-import "slick-carousel/slick/slick-theme.css"
+import React from 'react'
+import Slick from 'react-slick'
+import 'slick-carousel/slick/slick.css'
+import 'slick-carousel/slick/slick-theme.css'
 import image from '../../../assets/img/banner1.png'
 import image2 from '../../../assets/img/banner2.png'
 import image3 from '../../../assets/img/banner3.png'

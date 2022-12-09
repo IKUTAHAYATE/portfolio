@@ -1,11 +1,13 @@
-import { useState, useEffect } from "react"
+import { useEffect, useMemo } from 'react'
 import getItemResponse from '../api/getItemResponse'
+import { ItemDataContext, IsErrorContext, IsLoadingContext } from '../context/StateApi'
+import { useContext } from 'react'
 
 const useItemData = () => {
-    const [data, setData] = useState([]),
-        [isLoading, setIsLoading] = useState(true),
-        [isError, setIsError] = useState(false)
 
+    const [data, setData] = useContext(ItemDataContext),
+        [isLoading, setIsLoading] = useContext(IsLoadingContext),
+        [isError, setIsError] = useContext(IsErrorContext)
 
     useEffect(() => {
         const getItem = async () => {

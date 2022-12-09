@@ -2,18 +2,18 @@ import { Link } from 'react-router-dom'
 
 const BrandItem = () => {
 	const BRAND_LIST = [
-		"AAA",
-		"BBB",
-		"CCC",
-		"DDD",
-		"EEE",
-		"FFF",
-		"GGG",
-		"HHH",
-		"III",
-		"JJJ",
-		"KKK",
-		"LLL"
+		'AAA',
+		'BBB',
+		'CCC',
+		'DDD',
+		'EEE',
+		'FFF',
+		'GGG',
+		'HHH',
+		'III',
+		'JJJ',
+		'KKK',
+		'LLL'
 	];
   	return (
 		<ul className="p-brandList">
