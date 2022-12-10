@@ -3,7 +3,7 @@ export const ItemDataContext = createContext([])
 export const IsLoadingContext = createContext(true)
 export const IsErrorContext = createContext(false)
 
-const StateApi = ({children}) => {
+const ContextApi = ({children}) => {
     const [data, setData] = useState([]),
         [isLoading, setIsLoading] = useState(true),
         [isError, setIsError] = useState(false)
@@ -20,4 +20,4 @@ const StateApi = ({children}) => {
     )
 }
 
-export default StateApi
+export default ContextApi

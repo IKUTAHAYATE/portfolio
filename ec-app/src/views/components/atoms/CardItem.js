@@ -1,13 +1,13 @@
 import { Link } from 'react-router-dom'
 import handlerCategoryType from '../../fanc/handlerCategoryType'
 
-const CardItem = ({type, data, isLoading}) => {
+const CardItem = ({type, data}) => {
 	const items = handlerCategoryType(data, type)
 	return(
 		<>
 			{
-				isLoading ? 'Loading中...'
-				: (items?.map(item => {
+				
+				 (items?.map(item => {
 					return(
 						<li key={item.id} className="c-item">
 							<Link to="detail">

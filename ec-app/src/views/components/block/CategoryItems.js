@@ -1,7 +1,7 @@
 import CardItem from '../atoms/CardItem'
 import React from 'react'
 
-const CategoryItems = ({type, data, isLoading}) => {
+const CategoryItems = ({type, data}) => {
 	return(
 		<div className='l-inner'>
 			<section className="l-item">
@@ -9,7 +9,7 @@ const CategoryItems = ({type, data, isLoading}) => {
 					<h2 className="c-title">{type}</h2>
 				</div>
 				<ul className="c-itemList" data-item-list="new">
-					<CardItem type={type} data={data} isLoading={isLoading}/>
+					<CardItem type={type} data={data}/>
 				</ul>
 			</section>
 		</div>

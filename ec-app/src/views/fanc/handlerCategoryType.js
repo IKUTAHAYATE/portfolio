@@ -1,4 +1,4 @@
-const handlerCategoryType = (data, type) => {
+const handlerCategoryType = (data, type, id) => {
     let newData
 
     switch (type) {
@@ -11,6 +11,10 @@ const handlerCategoryType = (data, type) => {
         case 'new':
             return newData = data.filter(data => {
                 return data.new
+            })
+        case 'detail':
+            return newData = data.filter(data => {  
+                return data.id === Number(id)
             })
         default:
         throw new Error('operator is invalid')

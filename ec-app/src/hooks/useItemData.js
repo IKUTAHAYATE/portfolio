@@ -1,6 +1,6 @@
-import { useEffect, useMemo } from 'react'
+import { useEffect } from 'react'
 import getItemResponse from '../api/getItemResponse'
-import { ItemDataContext, IsErrorContext, IsLoadingContext } from '../context/StateApi'
+import { ItemDataContext, IsErrorContext, IsLoadingContext } from '../context/ContextApi'
 import { useContext } from 'react'
 
 const useItemData = () => {

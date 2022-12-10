@@ -1,11 +1,18 @@
-import { Link } from 'react-router-dom'
+import Header from '../components/modules/Header'
+import Footer from '../components/modules/Footer'
+import ContextApi from '../../context/ContextApi'
+import DetailItem from '../components/block/DetailItem'
+
 const Detail = () => {
-  return (
-    <>
-     	<h1>Detailページです</h1>
-      	<Link to="/list">Listページ</Link>
-    </>
-  )
+	return (
+		<>
+			<Header />
+			<ContextApi>
+				<DetailItem />
+			</ContextApi>
+			<Footer />
+		</>
+	)
 }
 
 export default Detail
