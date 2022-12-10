@@ -18,7 +18,6 @@ const DetaiMain = ({isLoading, item}) => {
                                 <h2 id="js-item-name" className="l-itemDetail__name">{item.name}</h2>
                                 <div className="l-itemDetail__brand">BRAND：<span id="js-item-brand">{item.brand}</span></div>
                                 <div className="l-itemDetail__size">
-                                    <div className="l-itemDetail__sizeSelect">Select Size：<span id="js-item-size">ー</span></div>
                                     
                                     <SizeList />
 

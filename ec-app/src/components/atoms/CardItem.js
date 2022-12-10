@@ -10,7 +10,7 @@ const CardItem = ({type, data}) => {
 				 (items?.map(item => {
 					return(
 						<li key={item.id} className="c-item">
-							<Link to="detail">
+							<Link to={`detail/?id=${item.id}`}>
 								<div className="c-item__cap">
 									<img src={`/assets/img/item/${item.id}.png`} loading="lazy" alt="" />
 								</div>
