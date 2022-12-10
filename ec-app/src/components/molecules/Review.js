@@ -10,9 +10,6 @@ const Review = () => {
 
 				<Stars />
 				
-				<div className="l-itemDetail__review__text">
-					<p>評価は: <span id="js-item-review">3</span>です</p>
-				</div>
 			</section>
 		</>
 	)

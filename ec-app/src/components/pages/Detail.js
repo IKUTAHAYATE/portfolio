@@ -7,9 +7,9 @@ const Detail = () => {
 	return (
 		<>
 			<Header />
-			<ContextApi>
-				<DetailItem />
-			</ContextApi>
+				<ContextApi>
+					<DetailItem />
+				</ContextApi>
 			<Footer />
 		</>
 	)
