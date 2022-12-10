@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import handlerCategoryType from '../../fanc/handlerCategoryType'
+import handlerCategoryType from '../../utility/handlerCategoryType'
 
 const CardItem = ({type, data}) => {
 	const items = handlerCategoryType(data, type)

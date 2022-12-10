@@ -1,7 +1,7 @@
 import React from 'react'
 import useItemData from '../../hooks/useItemData'
-import handlerCategoryType from '../fanc/handlerCategoryType'
-import CategoryItems from '../components/block/CategoryItems'
+import handlerCategoryType from '../../utility/handlerCategoryType'
+import CategoryItems from './CategoryItems'
 
 const GetItems = () => {
 	const categoryArray = ['new', 'men', 'woman', 'kids']

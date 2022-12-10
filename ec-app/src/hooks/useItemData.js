@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import getItemResponse from '../api/getItemResponse'
-import { ItemDataContext, IsErrorContext, IsLoadingContext } from '../context/ContextApi'
+import { ItemDataContext, IsErrorContext, IsLoadingContext } from '../store/ContextApi'
 import { useContext } from 'react'
 
 const useItemData = () => {

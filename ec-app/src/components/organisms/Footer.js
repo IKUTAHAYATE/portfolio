@@ -1,5 +1,5 @@
-import CommonLink from '../block/CommonLink'
-import Sns from '../block/Sns'
+import CommonLink from '../molecules/CommonLink'
+import Sns from '../molecules/Sns'
 
 const Footer = () => {
   return (

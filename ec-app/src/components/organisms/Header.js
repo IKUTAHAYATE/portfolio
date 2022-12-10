@@ -1,6 +1,6 @@
 import Logo from '../atoms/Logo'
-import Hamburger from '../block/Hamburger'
-import Form from '../block/Form'
+import Hamburger from '../molecules/Hamburger'
+import Form from '../molecules/Form'
 import SpHamburger from '../atoms/SpHamburger'
 import { RecoilRoot } from 'recoil'
 

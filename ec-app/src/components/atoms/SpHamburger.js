@@ -1,6 +1,6 @@
 import { React } from 'react'
 import { useRecoilState } from 'recoil'
-import hamburgerState from '../../../state/hamburgerState'
+import hamburgerState from '../../store/hamburgerState'
 
 const SpHamburger = () => {
 

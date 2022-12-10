@@ -4,10 +4,10 @@ import {
     Routes,
     Route
 } from 'react-router-dom';
-import List from '../views/pages/List';
-import Detail from '../views/pages/Detail';
-import Home from '../views/pages/Home';
-import Page404 from '../views/pages/Page404';
+import List from '../components/pages/List'
+import Detail from '../components/pages/Detail';
+import Home from '../components/pages/Home';
+import Page404 from '../components/pages/Page404';
 
 function App() {
     return (

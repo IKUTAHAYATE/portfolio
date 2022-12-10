@@ -1,20 +1,17 @@
-import facebook from '../../../assets/img/facebook.png'
-import twitter from '../../../assets/img/twitter.png'
-import instagram from '../../../assets/img/instagram.png'
 import { Link } from 'react-router-dom'
 
 const Sns = () => {
 	const snsList = [
 		{
-			src: facebook,
+			src: '/assets/img/twitter.png',
 			content: 'FaceBook',
 		},
 		{
-			src: twitter,
+			src: '/assets/img/twitter.png',
 			content: 'Twitter',
 		},
 		{
-			src: instagram,	
+			src: '/assets/img/instagram.png',	
 			content: 'Instagram',
 		}
 	]
@@ -23,7 +20,7 @@ const Sns = () => {
 		<ul className="c-sns">
 			{snsList.map(sns => {
 				return (
-					<li key={sns.src} className="c-snsItem">
+					<li key={sns.content} className="c-snsItem">
 						<Link to="#">
 							<img src={sns.src} className="c-sns__icon" alt="" />
 							<span className="c-sns__name">{sns.content}</span>

@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import Controls from '../atoms/Controls'
 import { useRecoilState } from 'recoil'
-import hamburgerState from '../../../state/hamburgerState'
+import hamburgerState from '../../store/hamburgerState'
 
 const Hamburger = () => {
 	const categoryList = [
