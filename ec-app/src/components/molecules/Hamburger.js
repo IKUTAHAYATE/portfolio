@@ -26,7 +26,7 @@ const Hamburger = () => {
 		<div id="js-hamburger-target" className={`l-header__links ${hamburger && 'is-active'}`}>
 			<nav className="l-menu">
 				{categoryList.map(category => {
-					const categoryParam = `/list/?cateory=${category.param}`;
+					const categoryParam = `/list/?category=${category.param}`;
 					return (
 						<Link key={categoryParam} to={categoryParam}>{category.content}</Link>
 					)

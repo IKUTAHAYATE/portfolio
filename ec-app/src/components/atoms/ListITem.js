@@ -2,9 +2,11 @@ import { useLocation } from 'react-router-dom'
 import useItemData from '../../hooks/useItemData'
 import CategoryItems from '../molecules/CategoryItems'
 import ListMoreBtn from './ListMoreBtn'
+import { useRecoilState } from 'recoil'
+import priceValueState from '../../store/priceValueState'
 
 const ListItem = () => {
-
+	const [ priceValue ] = useRecoilState(priceValueState)
 	const CheckId = () => {
 		const search = useLocation().search
 		const query = search
@@ -49,15 +51,17 @@ const ListItem = () => {
 
 	return (
 		<>
+			
 			{
-				isLoading ? 'Loading中...' :
-				(<CategoryItems
-					key={filterCategoryData}
-					type={filterCategoryData}
-					data={data}
-					brandId={queryParam[1]}
-				/>)
-				
+				priceValue === 0 ? (
+					isLoading ? 'Loading中...' :
+					(<CategoryItems
+						key={filterCategoryData}
+						type={filterCategoryData}
+						data={data}
+						brandId={queryParam[1]}
+					/>)
+				): 'ここは永久工事中です。'
 			}
 			
 			<ListMoreBtn />

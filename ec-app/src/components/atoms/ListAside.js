@@ -1,13 +1,16 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
+import priceValueState from '../../store/priceValueState'
+import { useRecoilState } from 'recoil'
 
 const ListAside = () => {	
 
 	const [ more, setMore ] = useState(false)
+	const [ priceValue, setPriceValue ] = useRecoilState(priceValueState)
 
 	const CATEGRY_LIST = [
 			'men',
-			'women',
+			'woman',
 			'kids'
 		],
 	
@@ -55,7 +58,13 @@ const ListAside = () => {
 			<div className="l-sidebar__body">
 				<form name="priceform" action="list.html" method="GET">
 					<div className="l-sidebar__priceSelect__wrap">
-						<select id="js-select-price" name="price" className="l-sidebar__priceSelect">
+						<select
+							id="js-select-price"
+							name="price"
+							className="l-sidebar__priceSelect"
+							value={priceValue}
+							onChange={(e) => setPriceValue(e.target.value)}
+						>
 							<option hidden="">価格を選択する</option>
 							{PRICE_SELECT.map(item => {
 								return(

@@ -20,7 +20,7 @@ const BrandItem = () => {
 			{BRAND_LIST.map(item => {
 				return (
 					<li key={item} className="p-brandItem">
-						<Link to={item}>{item}</Link>
+						<Link to='/'>{item}</Link>
 					</li>
 				)
 			})}

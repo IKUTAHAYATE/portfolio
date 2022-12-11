@@ -24,7 +24,7 @@ const CardItem = ({type, data, id, brandId}) => {
 				(items?.map(item => {
 					return(
 						<li key={item.id} className={`c-item ${moreBtnContext && 'is-active'}`}>
-							<Link to={`detail/?id=${item.id}`}>
+							<Link to={`/detail/?id=${item.id}`}>
 								<div className="c-item__cap">
 									<img src={`/assets/img/item/${item.id}.png`} loading="lazy" alt="" />
 								</div>

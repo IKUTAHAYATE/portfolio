@@ -1,6 +1,5 @@
 import Logo from '../atoms/Logo'
 import Hamburger from '../molecules/Hamburger'
-import Form from '../molecules/Form'
 import SpHamburger from '../atoms/SpHamburger'
 import { RecoilRoot } from 'recoil'
 
@@ -12,7 +11,6 @@ const Header = () => {
 					<RecoilRoot>
 						<Logo />
 						<Hamburger />
-						<Form />
 						<SpHamburger />
 					</RecoilRoot>
 				</div>

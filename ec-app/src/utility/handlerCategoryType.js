@@ -1,5 +1,4 @@
 const handlerCategoryType = (data, type, id=null, brandId) => {
-
     let newData
 
     switch (type) {
