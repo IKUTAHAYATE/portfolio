@@ -3,11 +3,11 @@ import handlerCategoryType from '../../utility/handlerCategoryType'
 import { useRecoilState } from "recoil";
 import moreBtnState from '../../store/moreBtnState'
 
-const CardItem = ({type, data}) => {
+const CardItem = ({type, data, id, brandId}) => {
 
 	const [moreBtnContext] = useRecoilState(moreBtnState);
 
-	const items = handlerCategoryType(data, type)
+	const items = handlerCategoryType(data, type, id=null, brandId)
 
 	return(
 		<>

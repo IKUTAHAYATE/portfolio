@@ -28,7 +28,6 @@ const ListItem = () => {
 					return queryParam[1] === category
 				})
 				return newData[0]
-
 			case 'brand':
 				return queryParam[0]
 			default:
@@ -56,8 +55,11 @@ const ListItem = () => {
 					key={filterCategoryData}
 					type={filterCategoryData}
 					data={data}
+					brandId={queryParam[1]}
 				/>)
+				
 			}
+			
 			<ListMoreBtn />
 		</>
 	)

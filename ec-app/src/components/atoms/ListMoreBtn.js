@@ -2,8 +2,12 @@ import { memo } from "react"
 import { useRecoilState } from "recoil"
 import moreBtnState from '../../store/moreBtnState'
 
-const ListMoreBtn = memo(() => {
+const ListMoreBtn = memo((itemLength) => {
 	const [moreBtnContext, setMoreBtnContext] = useRecoilState(moreBtnState);
+
+	if (itemLength < 20) {
+		return
+	}
 
 	return(
 		<div

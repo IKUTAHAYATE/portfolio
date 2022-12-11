@@ -1,6 +1,6 @@
 import CardItem from '../atoms/CardItem'
 
-const CategoryItems = ({type, data}) => {
+const CategoryItems = ({type, data, brandId}) => {
 
 	return(
 		<div className='l-inner'>
@@ -9,11 +9,10 @@ const CategoryItems = ({type, data}) => {
 					<h2 className="c-title">{type}</h2>
 				</div>
 				<ul className="c-itemList" data-item-list="new">
-					<CardItem type={type} data={data}/>
+					<CardItem type={type} data={data} brandId={brandId}/>
 				</ul>
 			</section>
 		</div>
-
 	)
 }
 
