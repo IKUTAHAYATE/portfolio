@@ -9,20 +9,20 @@ const List = () => {
 	return(
 		<>
 			<RecoilRoot>
-				<Header />
-					<ContextApi>
-					<div className="l-inner">
-						<div id="page-list" className="l-contents">
-							<div className="l-list">
-								
-								<ListAside />
-								<ListItem />
+				<ContextApi>
+					<Header />
+						<div className="l-inner">
+							<div id="page-list" className="l-contents">
+								<div className="l-list">
+									
+									<ListAside />
+									<ListItem />
 
+								</div>
 							</div>
 						</div>
-					</div>
-					</ContextApi>
-				<Footer />
+					<Footer />
+				</ContextApi>
 			</RecoilRoot>
 		</>
 	)
