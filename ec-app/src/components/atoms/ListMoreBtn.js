@@ -1,11 +1,14 @@
 import { memo } from "react"
 import { useRecoilState } from "recoil"
 import moreBtnState from '../../store/moreBtnState'
+import itemLengthState from "../../store/itemLengthState"
 
-const ListMoreBtn = memo((itemLength) => {
+const ListMoreBtn = memo(() => {
 	const [moreBtnContext, setMoreBtnContext] = useRecoilState(moreBtnState);
+	const [ itemLength ] = useRecoilState(itemLengthState)
 
-	if (itemLength < 20) {
+
+	if (itemLength < 10) {
 		return
 	}
 

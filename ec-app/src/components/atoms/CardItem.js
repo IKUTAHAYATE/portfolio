@@ -2,12 +2,21 @@ import { Link } from 'react-router-dom'
 import handlerCategoryType from '../../utility/handlerCategoryType'
 import { useRecoilState } from "recoil";
 import moreBtnState from '../../store/moreBtnState'
+import itemLengthState from '../../store/itemLengthState';
+import { useEffect } from 'react'
 
 const CardItem = ({type, data, id, brandId}) => {
 
-	const [moreBtnContext] = useRecoilState(moreBtnState);
+	const [moreBtnContext] = useRecoilState(moreBtnState)
+	const [ itemLength, setItemLength ] = useRecoilState(itemLengthState)
 
 	const items = handlerCategoryType(data, type, id=null, brandId)
+
+
+	useEffect(() => {
+		setItemLength(items.length)
+	}, [items.length])
+	
 
 	return(
 		<>

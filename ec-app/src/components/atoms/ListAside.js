@@ -43,7 +43,7 @@ const ListAside = () => {
 					{CATEGRY_LIST.map(item => {
 						return(
 							<li key={item} className="l-sidebar__item">
-								<a href={`list.html?category=${item}`}>{item.toUpperCase()}</a>
+								<Link to={`/list/?category=${item}`}>{item.toUpperCase()}</Link>
 							</li>
 						)
 					})}
