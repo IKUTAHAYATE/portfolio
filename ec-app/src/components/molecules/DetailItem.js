@@ -1,7 +1,7 @@
 import useItemData from "../../hooks/useItemData"
 import getError from "../atoms/getError"
 import { useLocation } from 'react-router-dom'
-import handlerCategoryType from "../../utility/handlerCategoryType"
+import handlerCategoryType from '../../utility/handlerCategoryType'
 import DetaiMain from "./DatailMain"
 import Review from "./Review"
 

@@ -9,8 +9,8 @@ const Header = () => {
 		<>
 			<header className="l-header">
 				<div className="l-inner">
-					<Logo />
 					<RecoilRoot>
+						<Logo />
 						<Hamburger />
 						<Form />
 						<SpHamburger />

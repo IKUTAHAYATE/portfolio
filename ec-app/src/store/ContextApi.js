@@ -1,7 +1,7 @@
 import { useState,createContext } from 'react'
-export const ItemDataContext = createContext([])
-export const IsLoadingContext = createContext(true)
-export const IsErrorContext = createContext(false)
+export const ItemDataContext = createContext()
+export const IsLoadingContext = createContext()
+export const IsErrorContext = createContext()
 
 const ContextApi = ({children}) => {
     const [data, setData] = useState([]),

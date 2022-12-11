@@ -1,4 +1,7 @@
-const handlerCategoryType = (data, type, id) => {
+import { useRecoilState } from "recoil"
+
+const HandlerCategoryType = (data, type, id) => {
+
     let newData
 
     switch (type) {
@@ -16,9 +19,14 @@ const handlerCategoryType = (data, type, id) => {
             return newData = data.filter(data => {  
                 return data.id === Number(id)
             })
+        case 'brand':
+            return newData = data.filter(data => {
+                // ブランドアイテムを...
+                return data.brand === 'AAA'
+            })
         default:
         throw new Error('operator is invalid')
     }
 }
 
-export default handlerCategoryType
+export default HandlerCategoryType

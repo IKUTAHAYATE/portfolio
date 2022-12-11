@@ -4,11 +4,12 @@ import Brand from '../molecules/Brand'
 import Footer from '../organisms/Footer'
 import ContextApi from '../../store/ContextApi'
 import GetItems from '../molecules/GetItems'
+import { RecoilRoot } from 'recoil'
 
 const Home = () => {
 
     return (
-      	<>
+		<RecoilRoot>
 			<ContextApi>
 				<Header />
 				<div className='l-contents'>
@@ -18,7 +19,7 @@ const Home = () => {
 				</div>
 				<Footer />
 			</ContextApi>
-      	</>
+		</RecoilRoot>
     )
   }
   

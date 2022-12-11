@@ -8,6 +8,9 @@
         margin-bottom: 20px;
         &:nth-child(n + 11) {
             display: none;
+            &.is-active {
+                display: block;
+            }
         }
         &.is-active {
             display: block;

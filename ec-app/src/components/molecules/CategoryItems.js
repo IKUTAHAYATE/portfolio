@@ -1,7 +1,7 @@
 import CardItem from '../atoms/CardItem'
-import React from 'react'
 
 const CategoryItems = ({type, data}) => {
+
 	return(
 		<div className='l-inner'>
 			<section className="l-item">
@@ -13,6 +13,7 @@ const CategoryItems = ({type, data}) => {
 				</ul>
 			</section>
 		</div>
+
 	)
 }
 
